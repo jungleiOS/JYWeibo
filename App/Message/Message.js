@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, Button} from 'react-native';
-import SubMessage from './SubMessage'; 
 export default class Message extends Component {
     render() {
         const { navigation } = this.props;
@@ -12,6 +11,12 @@ export default class Message extends Component {
                 <Text>itemId: {JSON.stringify(itemId)}</Text>
                 <Text>otherParam: {JSON.stringify(otherParam)}</Text>
                 <Text>Message Screen</Text>
+                <Button 
+                    title = "去SubMessage"
+                    onPress = { () => this.props.navigation.push('SubMessage', {
+                        itemId: Math.floor(Math.random() * 100),
+                    }) }
+                />
                 <Button 
                     title = "去Message"
                     onPress = { () => this.props.navigation.push('Message', {

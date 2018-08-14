@@ -11,26 +11,48 @@ import React, {
 } from 'react';
 
 import {
-  createStackNavigator
+  createStackNavigator,
+  createBottomTabNavigator
 } from 'react-navigation';
 
 import WeiboHome from './App/Home/WeiboHome';
 import Message from './App/Message/Message';
+import SubMessage from './App/Message/SubMessage'; 
 
 export default class App extends Component {
   render() {
     return (
-      <RootNavigator/>
+      <RootTabNavigator/>
     );
   }
 }
 
-const RootNavigator = createStackNavigator(
-  {
-    Home: WeiboHome,
-    Message: Message, 
-  },
-  {
-    initialRouteName: 'Home',
-  }
-);
+// const RootTabNavigator = TabNavigator({
+
+// },{});
+
+// const RootNavigator = createStackNavigator(
+//   {
+//     Home: WeiboHome,
+//     Message: Message, 
+//     SubMessage: SubMessage,
+//   },
+//   {
+//     initialRouteName: 'Home',
+//   }
+// );
+
+const HomeStack = createStackNavigator({
+  Home: WeiboHome,
+  SubMessage: SubMessage,
+});
+
+const MessageStack = createStackNavigator({
+  Message: Message,
+  SubMessage: SubMessage,
+})
+
+const RootTabNavigator = createBottomTabNavigator({
+  Home: HomeStack,
+  Message: MessageStack
+},{})

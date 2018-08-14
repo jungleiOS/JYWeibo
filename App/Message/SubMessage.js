@@ -5,7 +5,7 @@ export default class Message extends Component {
     render() {
         return (
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Message Screen</Text>
+                <Text>SubMessage Screen</Text>
             </View>
         );
     }
