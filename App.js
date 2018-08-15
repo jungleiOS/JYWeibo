@@ -11,48 +11,60 @@ import React, {
 } from 'react';
 
 import {
+  View
+} from 'react-native';
+
+import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
 
 import WeiboHome from './App/Home/WeiboHome';
 import Message from './App/Message/Message';
-import SubMessage from './App/Message/SubMessage'; 
+import SubMessage from './App/Message/SubMessage';
 
 export default class App extends Component {
   render() {
-    return (
-      <RootTabNavigator/>
+    return ( 
+        <RootNavigator/>  
     );
   }
-}
-
-// const RootTabNavigator = TabNavigator({
-
-// },{});
-
-// const RootNavigator = createStackNavigator(
-//   {
-//     Home: WeiboHome,
-//     Message: Message, 
-//     SubMessage: SubMessage,
-//   },
-//   {
-//     initialRouteName: 'Home',
-//   }
-// );
+};
 
 const HomeStack = createStackNavigator({
-  Home: WeiboHome,
-  SubMessage: SubMessage,
+  Home: {
+    screen: WeiboHome,
+    navigationOptions: {
+      title: '首页',
+      tabBarPosition: 'bottom',
+      tabBarLabel: '首页',
+      showLabel: true,
+    }
+  },
 });
 
 const MessageStack = createStackNavigator({
-  Message: Message,
-  SubMessage: SubMessage,
-})
+  Message: {
+    screen: Message,
+    navigationOptions: {
+      title:'消息',
+      tabBarPosition: 'bottom',
+      showLabel: true,
+    }
+  },
+});
 
 const RootTabNavigator = createBottomTabNavigator({
-  Home: HomeStack,
-  Message: MessageStack
-},{})
+  'Home': HomeStack,
+  'Message': MessageStack,
+}, {});
+
+const RootNavigator = createStackNavigator({
+  RootTab: {
+    screen: RootTabNavigator,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  SubMessage: SubMessage,
+});
