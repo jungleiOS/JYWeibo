@@ -11,10 +11,6 @@ import React, {
 } from 'react';
 
 import {
-  View
-} from 'react-native';
-
-import {
   createStackNavigator,
   createBottomTabNavigator
 } from 'react-navigation';
@@ -22,6 +18,8 @@ import {
 import WeiboHome from './App/Home/WeiboHome';
 import Message from './App/Message/Message';
 import SubMessage from './App/Message/SubMessage';
+
+console.disableYellowBox = true;
 
 export default class App extends Component {
   render() {
@@ -31,39 +29,26 @@ export default class App extends Component {
   }
 };
 
-const HomeStack = createStackNavigator({
+const RootTabNavigator = createBottomTabNavigator({
   Home: {
     screen: WeiboHome,
     navigationOptions: {
-      title: '首页',
-      tabBarPosition: 'bottom',
       tabBarLabel: '首页',
-      showLabel: true,
     }
   },
-});
-
-const MessageStack = createStackNavigator({
   Message: {
     screen: Message,
     navigationOptions: {
-      title:'消息',
-      tabBarPosition: 'bottom',
-      showLabel: true,
+      tabBarLabel: '消息',
     }
   },
 });
 
-const RootTabNavigator = createBottomTabNavigator({
-  'Home': HomeStack,
-  'Message': MessageStack,
-}, {});
-
 const RootNavigator = createStackNavigator({
   RootTab: {
-    screen: RootTabNavigator,
+    screen:RootTabNavigator,
     navigationOptions: {
-      header: null,
+      header: null
     }
   },
   SubMessage: SubMessage,
