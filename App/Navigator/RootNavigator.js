@@ -15,8 +15,8 @@ const HomeStack = createStackNavigator({
     Home: {
         screen: WeiboHome,
         navigationOptions: {
-            title: '首页',
-            // header:
+            // title: '首页',
+            header:null
         }
     },
 })
@@ -25,7 +25,8 @@ const MessageStack = createStackNavigator({
     Message: {
         screen: Message,
         navigationOptions: {
-            title: '消息'
+            // title: '消息'
+            header:null
         }
     },
 });
