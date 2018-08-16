@@ -10,46 +10,15 @@ import React, {
   Component
 } from 'react';
 
-import {
-  createStackNavigator,
-  createBottomTabNavigator
-} from 'react-navigation';
-
-import WeiboHome from './App/Home/WeiboHome';
-import Message from './App/Message/Message';
-import SubMessage from './App/Message/SubMessage';
+import { RootNavigator } from './App/Navigator/RootNavigator'
 
 console.disableYellowBox = true;
 
 export default class App extends Component {
   render() {
     return ( 
-        <RootNavigator/>  
+      <RootNavigator/>  
     );
   }
 };
 
-const RootTabNavigator = createBottomTabNavigator({
-  Home: {
-    screen: WeiboHome,
-    navigationOptions: {
-      tabBarLabel: '首页',
-    }
-  },
-  Message: {
-    screen: Message,
-    navigationOptions: {
-      tabBarLabel: '消息',
-    }
-  },
-});
-
-const RootNavigator = createStackNavigator({
-  RootTab: {
-    screen:RootTabNavigator,
-    navigationOptions: {
-      header: null
-    }
-  },
-  SubMessage: SubMessage,
-});
