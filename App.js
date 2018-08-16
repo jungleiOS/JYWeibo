@@ -10,14 +10,14 @@ import React, {
   Component
 } from 'react';
 
-import { RootNavigator } from './App/Navigator/RootNavigator'
+import { AppNavigator } from './App/Navigator/RootNavigator'
 
 console.disableYellowBox = true;
 
 export default class App extends Component {
   render() {
     return ( 
-      <RootNavigator/>  
+      <AppNavigator/>  
     );
   }
 };
