@@ -12,7 +12,7 @@ import React, {
 
 import { AppNavigator } from './App/Navigator/RootNavigator'
 
-console.disableYellowBox = true;
+// console.disableYellowBox = true;
 
 export default class App extends Component {
   render() {

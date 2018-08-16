@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import { Text, View, Button} from 'react-native';
+import { Text, View, Button, PanResponder } from 'react-native';
 
 export default class WeiboHome extends Component {
+    componentWillMount() {
+        this._panResponder = PanResponder.create({
+            onStartShouldSetPanResponder: (e, gestureState) => {
+                console.log(+JSON.stringify(gestureState));
+                console.log(e.nativeEvent.locationX);
+                return true;
+            }
+        });
+    }
     render() {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <View {...this._panResponder.panHandlers}style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 <Text>Home Screen</Text>
                 <Button 
                     title = "去消息页"

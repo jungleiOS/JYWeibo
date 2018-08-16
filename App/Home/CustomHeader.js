@@ -7,7 +7,7 @@ import {
     Button
 } from 'react-native';
 
-export default class WeiboHome extends Component {
+export default class CustomHeader extends Component {
     render() {
         return (
             <View>

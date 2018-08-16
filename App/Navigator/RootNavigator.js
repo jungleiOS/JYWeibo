@@ -2,7 +2,7 @@ import React, {
     Component
 } from 'react';
 
-import WeiboHome from '../Home/CustomHeader';
+import WeiboHome from '../Home/WeiboHome';
 import Message from '../Message/Message';
 import Add from '../Add/Add';
 import Found from '../Found/Found';
@@ -111,21 +111,14 @@ const RootNavigator = createStackNavigator({
 });
 
 const DrawerNavigator = createDrawerNavigator({
-    Home: {
-        screen: RootNavigator,
-        navigationOptions: {
-            gesturesEnabled: true,
-            gestureResponseDistance: {
-                horizontal: 300
-            },
-        }
-    },
-    Drawer: Message
+    Home: RootNavigator,
+    Message: Message
 });
 
 const AppNavigator = createSwitchNavigator({
     Home: DrawerNavigator,
     SubMessage: SubMessage,
 });
+
 
 export { AppNavigator };
