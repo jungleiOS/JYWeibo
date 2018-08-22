@@ -1,28 +1,32 @@
 import React, { Component } from 'react';
-import { Text, View, Button, PanResponder } from 'react-native';
-
+import { 
+    Text, 
+    View, 
+    TextInput, 
+    TouchableOpacity,
+    Dimensions,
+    StyleSheet
+ } from 'react-native';
+const WIDTH = Dimensions.get('window').width;
 export default class WeiboHome extends Component {
-    componentWillMount() {
-        this._panResponder = PanResponder.create({
-            onStartShouldSetPanResponder: (e, gestureState) => {
-                console.log(+JSON.stringify(gestureState));
-                console.log(e.nativeEvent.locationX);
-                return true;
-            }
-        });
+    
+    constructor(props) {
+        super(props);
+        this.state = {
+            ischange : true,
+        }
     }
+
     render() {
+        console.log('====> '+ this.ischange)
         return (
-            <View {...this._panResponder.panHandlers}style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <Text>Home Screen</Text>
-                <Button 
-                    title = "去消息页"
-                    onPress = { () => this.props.navigation.navigate('Message', {
-                        itemId: 86,
-                        otherParam: 'anything you want here',
-                    }) }
-                />
+            <View style={{ flex: 1, flexDirection:"column",justifyContent:'space-between'}}>
+                
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    
+});
