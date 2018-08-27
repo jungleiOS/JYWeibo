@@ -9,6 +9,7 @@ import Found from '../Found/Found';
 import Setting from '../Setting/Setting';
 
 import SubMessage from '../Message/SubMessage';
+import SelectGroup from '../Home/SelectGroup.js'
 
 import {
     createStackNavigator,
@@ -21,7 +22,6 @@ const HomeStack = createStackNavigator({
     Home: {
         screen: WeiboHome,
         navigationOptions: {
-            // title: '首页',
             header:null
         }
     },
@@ -31,7 +31,6 @@ const MessageStack = createStackNavigator({
     Message: {
         screen: Message,
         navigationOptions: {
-            // title: '消息'
             header:null
         }
     },
@@ -41,7 +40,6 @@ const AddStack = createStackNavigator({
     Add: {
         screen: Add,
         navigationOptions: {
-            // title: '首页',
             header:null
         }
     },
@@ -51,7 +49,6 @@ const FoundStack = createStackNavigator({
     Found: {
         screen: Found,
         navigationOptions: {
-            // title: '首页',
             header:null
         }
     },
@@ -108,6 +105,7 @@ const RootNavigator = createStackNavigator({
         }
     },
     SubMessage: SubMessage,
+    SelectGroup: SelectGroup
 });
 
 const DrawerNavigator = createDrawerNavigator({
@@ -116,8 +114,7 @@ const DrawerNavigator = createDrawerNavigator({
 });
 
 const AppNavigator = createSwitchNavigator({
-    Home: DrawerNavigator,
-    SubMessage: SubMessage,
+    Home: DrawerNavigator
 });
 
 

@@ -1,25 +1,17 @@
 import React, {Component} from "react";
 import {
     Text,
-    View,
-    TouchableOpacity,
     Dimensions,
     StyleSheet,
-    FlatList,
-    Animated,
     ScrollView
 } from "react-native";
 
 import {
-    Container,
-    Header,
-    Left,
-    Body,
-    Right,
-    Button,
-    Icon,
-    Title
+    Container
 } from "native-base";
+
+import HomeHeader from './HomeHeader';
+import SelectGroup from './SelectGroup';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
@@ -40,12 +32,11 @@ export default class WeiboHome extends Component {
         this.maxWidth = WIDTH/4;
         this.minWidth = WIDTH/16;
         this.scrollEnd = true;
+        this.currentTitle = 1;
     }
 
     scrollDirection(offsetX){
-    
         this.newX = offsetX;
-        
         if (this.newX !== this.oldX) {
             if (this.newX > this.oldX) {
                 this.isRight = true;
@@ -78,90 +69,62 @@ export default class WeiboHome extends Component {
         }
     }
 
+    _onMomentumScrollEnd = (contentOffset) => {
+        this.scrollDirection(contentOffset.x);
+        this.scrollEnd = true;
+        if (this.isRight){
+            this.setState({
+                left:sliderLength,
+                slideLineWidth:sliderLength
+            });
+        }
+        else {
+            this.setState({
+                left:0,
+                slideLineWidth:sliderLength
+            });
+        }
+    }
+
+    headerCallback = (obj) => {
+        if (obj.index === this.currentTitle) {
+            this.props.navigation.push('SelectGroup');
+            return;
+        }else {
+            this.currentTitle = obj.index;
+        }
+        if (obj.index === 1){
+            this.refs.scrollView.scrollTo({x: 0, y: 0, animated: true})
+            this._onMomentumScrollEnd({x: 0, y: 0});
+        }
+        else {
+            this.refs.scrollView.scrollTo({x: WIDTH, y: 0, animated: true})
+            this._onMomentumScrollEnd({x: WIDTH, y: 0});
+        }
+    }
+
     render() {
         return (
             <Container>
-                <Header>
-                    <Left style={{flex:1}}>
-                        <Button transparent>
-                            <Icon name="camera"/>
-                        </Button>
-                    </Left>
-                    <Body>
-                        <View style={{justifyContent:'flex-start',maxWidth:2*sliderLength}}> 
-                            <View 
-                                style={{
-                                    width:WIDTH/4,
-                                    flexDirection:'row',
-                                    justifyContent:'space-around',
-                                    alignItems:'center'
-                                }}>
-                                <TouchableOpacity>
-                                    <Text style={{color:'brown'}}>
-                                        关注
-                                    </Text>
-                                </TouchableOpacity>
-                                <TouchableOpacity>
-                                    <Text style={{color:'brown'}}>
-                                        热门
-                                    </Text>
-                                </TouchableOpacity>
-                            </View>
-                            <Animated.View style={{
-                                backgroundColor:'pink',
-                                width:this.state.slideLineWidth,
-                                height:2,
-                                marginTop:4,
-                                maxWidth:2*sliderLength,
-                                minWidth:sliderLength,
-                                left:this.state.left
-                                }}>
-                            </Animated.View>
-                        </View>
-                    </Body>
-                    <Right>
-                        <Button transparent>
-                            <Icon name="search"/>
-                        </Button>
-                        <Button transparent>
-                            <Icon name="heart"/>
-                        </Button>
-                        <Button transparent>
-                            <Icon name="more"/>
-                        </Button>
-                    </Right>
-                </Header>
+                <HomeHeader
+                    slideLineWidth = {this.state.slideLineWidth}
+                    callback = {(obj)=>this.headerCallback(obj)}
+                    left = {this.state.left}
+                    maxWidth = {this.maxWidth}
+                />
 
                 <ScrollView 
+                    ref = "scrollView"
                     horizontal={true}
                     pagingEnabled = {true}
                     showsHorizontalScrollIndicator = {false}
                     bounces = {false}
-                    onMomentumScrollEnd = {(event)=>{
-                        this.scrollDirection(event.nativeEvent.contentOffset.x);
-                        this.scrollEnd = true;
-                        if(this.tempWidth === this.maxWidth) {
-                            if (this.isRight){
-                                this.setState({
-                                    left:sliderLength,
-                                    slideLineWidth:sliderLength
-                                });
-                            }
-                            else {
-                                this.setState({
-                                    left:0,
-                                    slideLineWidth:sliderLength
-                                });
-                            }
-                            
-                        }
-                    }}
+                    onMomentumScrollEnd = {(event)=>this._onMomentumScrollEnd(event.nativeEvent.contentOffset)}
                     onScroll = {(event)=>this._onScroll(event)}
-                    
                     scrollEventThrottle = {60}
                 >
-                    <Text style={styles.test1}>23333</Text>
-                    <Text style={styles.test}>23333</Text>
+                    <Text style={styles.test1}></Text>
+                    <Text style={styles.test}></Text>
                 </ScrollView>
             </Container>
         );
