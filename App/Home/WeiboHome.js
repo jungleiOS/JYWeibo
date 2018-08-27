@@ -22,40 +22,60 @@ import {
 } from "native-base";
 
 const WIDTH = Dimensions.get('window').width;
-const HEIGHT = Dimensions.get('window').HEIGHT;
+const HEIGHT = Dimensions.get('window').height;
+const sliderLength = WIDTH/8;
 export default class WeiboHome extends Component {
     constructor(props) {
         super(props);
         this.state = {
             ischange: true,
-            slideLineWidth: WIDTH/8,
-            translationDistance:0
+            slideLineWidth: sliderLength,
+            translationDistance:0,
+            left:0
         };
         this.newX = 0;
         this.oldX = 0;
         this.isRight = false;
+        this.tempWidth = this.state.slideLineWidth;
+        this.maxWidth = WIDTH/4;
+        this.minWidth = WIDTH/16;
+        this.scrollEnd = true;
     }
 
     scrollDirection(offsetX){
-        if(offsetX < 0){
-            this.isRight = false;
-            this.oldX = 0;
-            return;
-        }else if (offsetX > WIDTH) {
-            this.oldX = WIDTH;
-            this.isRight = true;
-            return;
-        }
+    
         this.newX = offsetX;
+        
         if (this.newX !== this.oldX) {
             if (this.newX > this.oldX) {
                 this.isRight = true;
             }
-            else if (this.newX < this.oldX) {
+            else {
                 this.isRight = false;
             }
         }
         this.oldX = this.newX;
+    }
+
+    _onScroll = (event) => {
+        let offsetX = event.nativeEvent.contentOffset.x;
+        if (this.scrollEnd) {
+            this.scrollDirection(event.nativeEvent.contentOffset.x);
+        }
+        let offset = offsetX/WIDTH;
+        this.scrollEnd = false;
+        if(this.isRight) {
+            this.tempWidth = sliderLength*(1+offset);  
+            this.setState({
+                slideLineWidth:this.tempWidth
+            });
+        }
+        else {
+            this.setState({
+                left: sliderLength*offset,
+                slideLineWidth: sliderLength*(1+1-offset)
+            });     
+        }
     }
 
     render() {
@@ -68,30 +88,33 @@ export default class WeiboHome extends Component {
                         </Button>
                     </Left>
                     <Body>
-                        <View style={{justifyContent:'flex-start'}}> 
+                        <View style={{justifyContent:'flex-start',maxWidth:2*sliderLength}}> 
                             <View 
                                 style={{
                                     width:WIDTH/4,
                                     flexDirection:'row',
                                     justifyContent:'space-around',
                                     alignItems:'center'
-                                    }}>
-                                <Text style={{color:'brown'}}>
-                                    {/* 特别 */}
-                                    关注
-                                </Text>
-                                <Text style={{color:'brown'}}>
-                                    热门
-                                </Text>
+                                }}>
+                                <TouchableOpacity>
+                                    <Text style={{color:'brown'}}>
+                                        关注
+                                    </Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity>
+                                    <Text style={{color:'brown'}}>
+                                        热门
+                                    </Text>
+                                </TouchableOpacity>
                             </View>
                             <Animated.View style={{
                                 backgroundColor:'pink',
                                 width:this.state.slideLineWidth,
                                 height:2,
                                 marginTop:4,
-                                maxWidth:WIDTH/4,
-                                minWidth:WIDTH/8,
-                                transform:[{translateX:this.state.translationDistance}]
+                                maxWidth:2*sliderLength,
+                                minWidth:sliderLength,
+                                left:this.state.left
                                 }}>
                             </Animated.View>
                         </View>
@@ -112,34 +135,29 @@ export default class WeiboHome extends Component {
                 <ScrollView 
                     horizontal={true}
                     pagingEnabled = {true}
-                    onMomentumScrollBegin = {(event)=>{
-                        console.log('开始  '+event.nativeEvent.contentOffset.x);
-                    }}
+                    showsHorizontalScrollIndicator = {false}
+                    bounces = {false}
                     onMomentumScrollEnd = {(event)=>{
-                        console.log('结束  '+event.nativeEvent.contentOffset.x);
-                    }}
-                    onScroll = {(event)=>{
-                        console.log('滚动  ' +event.nativeEvent.contentOffset.x);
                         this.scrollDirection(event.nativeEvent.contentOffset.x);
-                        let tempWidth = this.state.slideLineWidth;
-                        let maxWidth = WIDTH/4;
-                        let minWidth = WIDTH/16;
-                        if(this.isRight) {
-                           tempWidth = tempWidth < maxWidth ? tempWidth+5 : maxWidth;  
+                        this.scrollEnd = true;
+                        if(this.tempWidth === this.maxWidth) {
+                            if (this.isRight){
+                                this.setState({
+                                    left:sliderLength,
+                                    slideLineWidth:sliderLength
+                                });
+                            }
+                            else {
+                                this.setState({
+                                    left:0,
+                                    slideLineWidth:sliderLength
+                                });
+                            }
+                            
                         }
-                        else {
-                            tempWidth = tempWidth > minWidth ? tempWidth-5 : minWidth;
-                        }
-                        // this.setState({
-                        //     slideLineWidth:tempWidth
-                        // });
-                        if (tempWidth === maxWidth) {
-                            this.setState({
-                                translationDistance:tempWidth
-                            });
-                        }
-
                     }}
+                    onScroll = {(event)=>this._onScroll(event)}
+                    
                     scrollEventThrottle = {60}
                 >
                     <Text style={styles.test1}>23333</Text>
