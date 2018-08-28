@@ -3,7 +3,9 @@ import {
     Text,
     Dimensions,
     StyleSheet,
-    ScrollView
+    ScrollView,
+    NativeModules,
+    NativeEventEmitter
 } from "react-native";
 
 import {
@@ -11,11 +13,11 @@ import {
 } from "native-base";
 
 import HomeHeader from './HomeHeader';
-import SelectGroup from './SelectGroup';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 const sliderLength = WIDTH/8;
+
 export default class WeiboHome extends Component {
     constructor(props) {
         super(props);
@@ -33,6 +35,13 @@ export default class WeiboHome extends Component {
         this.minWidth = WIDTH/16;
         this.scrollEnd = true;
         this.currentTitle = 1;
+    }
+
+    componentDidMount() {
+        let eventReceiver = new NativeEventEmitter(NativeModules.AddressBookModule);
+        this.subscription = eventReceiver.addListener('contactInfo',(contactObj)=>{
+            console.log('name = '+contactObj.name+'\n'+'phoneNumber = '+contactObj.phoneNumber);
+        });
     }
 
     scrollDirection(offsetX){
@@ -88,8 +97,14 @@ export default class WeiboHome extends Component {
 
     headerCallback = (obj) => {
         if (obj.index === this.currentTitle) {
-            this.props.navigation.push('SelectGroup');
-            return;
+            // this.props.navigation.push('SelectGroup');
+            NativeModules.AddressBookModule.takeContact('233');
+            NativeModules.AddressBookModule.promiseMessage('promise').then(
+                (result) => {
+                    console.log(result)
+                }
+            ).catch()
+            // return;
         }else {
             this.currentTitle = obj.index;
         }

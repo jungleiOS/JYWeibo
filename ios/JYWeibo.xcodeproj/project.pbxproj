@@ -54,6 +54,8 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		AE1C1FEB02434869A259552B /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2677C87B742B4C20BC3F0578 /* Roboto.ttf */; };
 		B12DFF88AC694C2E959004C4 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1497741272DC4874A3CAFF2B /* Roboto_medium.ttf */; };
+		C718895421354D8B004DA310 /* CallAdressbookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C718895321354D8B004DA310 /* CallAdressbookViewController.m */; };
+		C726BC3D213515E5008E0E25 /* AddressBookModule.m in Sources */ = {isa = PBXBuildFile; fileRef = C726BC3B213515E5008E0E25 /* AddressBookModule.m */; };
 		C79512280D044E59AB16609F /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 191D19E967484AF8A1E63537 /* MaterialCommunityIcons.ttf */; };
 		C7D5DC8D212FE60E0020E4C5 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7D5DC5A212FE60E0020E4C5 /* Octicons.ttf */; };
 		C7D5DC8E212FE60E0020E4C5 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7D5DC5B212FE60E0020E4C5 /* Feather.ttf */; };
@@ -399,6 +401,10 @@
 		A61A61A7558F4633AB0940D9 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/native-base/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B855A34D70494E268C91F882 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/native-base/Fonts/Feather.ttf"; sourceTree = "<group>"; };
+		C718895221354D8B004DA310 /* CallAdressbookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallAdressbookViewController.h; sourceTree = "<group>"; };
+		C718895321354D8B004DA310 /* CallAdressbookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallAdressbookViewController.m; sourceTree = "<group>"; };
+		C726BC3B213515E5008E0E25 /* AddressBookModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressBookModule.m; sourceTree = "<group>"; };
+		C726BC3C213515E5008E0E25 /* AddressBookModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressBookModule.h; sourceTree = "<group>"; };
 		C7D5DC5A212FE60E0020E4C5 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		C7D5DC5B212FE60E0020E4C5 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
 		C7D5DC5C212FE60E0020E4C5 /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Entypo.ttf; sourceTree = "<group>"; };
@@ -555,6 +561,7 @@
 		13B07FAE1A68108700A75B9A /* JYWeibo */ = {
 			isa = PBXGroup;
 			children = (
+				C726BC3A213515E5008E0E25 /* AddressBookModule */,
 				C7D5DC59212FE60E0020E4C5 /* Fonts */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -679,6 +686,18 @@
 				2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		C726BC3A213515E5008E0E25 /* AddressBookModule */ = {
+			isa = PBXGroup;
+			children = (
+				C718895221354D8B004DA310 /* CallAdressbookViewController.h */,
+				C718895321354D8B004DA310 /* CallAdressbookViewController.m */,
+				C726BC3C213515E5008E0E25 /* AddressBookModule.h */,
+				C726BC3B213515E5008E0E25 /* AddressBookModule.m */,
+			);
+			name = AddressBookModule;
+			path = JYWeibo/AddressBookModule;
 			sourceTree = "<group>";
 		};
 		C7D5DC59212FE60E0020E4C5 /* Fonts */ = {
@@ -1300,6 +1319,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				C718895421354D8B004DA310 /* CallAdressbookViewController.m in Sources */,
+				C726BC3D213515E5008E0E25 /* AddressBookModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
