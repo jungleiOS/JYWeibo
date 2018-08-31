@@ -5,7 +5,9 @@ import {
     StyleSheet,
     ScrollView,
     NativeModules,
-    NativeEventEmitter
+    NativeEventEmitter,
+    DeviceEventEmitter,
+    Platform
 } from "react-native";
 
 import {
@@ -38,10 +40,19 @@ export default class WeiboHome extends Component {
     }
 
     componentDidMount() {
-        // let eventReceiver = new NativeEventEmitter(NativeModules.AddressBookModule);
-        // this.subscription = eventReceiver.addListener('contactInfo',(contactObj)=>{
-        //     console.log('name = '+contactObj.name+'\n'+'phoneNumber = '+contactObj.phoneNumber);
-        // });
+        
+        if (Platform.OS === "ios") {
+            let eventReceiver = new NativeEventEmitter(NativeModules.AddressBookModule);
+            this.subscription = eventReceiver.addListener('contactInfo',(contactObj)=>{
+                console.log('name = '+contactObj.name+'\n'+'phoneNumber = '+contactObj.phoneNumber);
+            });
+        }
+        else {
+            DeviceEventEmitter.addListener('contactInfo',(contactObj)=>{
+                console.log('name = '+contactObj.name+'\n'+'phoneNumber = '+contactObj.phoneNumber);
+            });
+        }
+        
     }
 
     scrollDirection(offsetX){
@@ -99,12 +110,12 @@ export default class WeiboHome extends Component {
         if (obj.index === this.currentTitle) {
             // this.props.navigation.push('SelectGroup');
             NativeModules.AddressBookModule.takeContact('233');
-            // NativeModules.AddressBookModule.promiseMessage('promise').then(
-            //     (result) => {
-            //         console.log(result)
-            //     }
-            // ).catch()
-            // return;
+            NativeModules.AddressBookModule.promiseMessage('promise').then(
+                (result) => {
+                    console.log(result)
+                }
+            ).catch()
+            return;
         }else {
             this.currentTitle = obj.index;
         }
