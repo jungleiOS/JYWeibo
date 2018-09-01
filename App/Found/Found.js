@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Text, View, Button} from 'react-native';
-
+import { Text, View, Button, TouchableOpacity} from 'react-native';
+import { Network } from '../Network/Network'
 export default class Found extends Component {
     render() {
         return (
@@ -13,6 +13,14 @@ export default class Found extends Component {
                         otherParam: 'anything you want here',
                     }) }
                 />
+                <TouchableOpacity onPress={()=>{
+                    Network.get((res)=>{
+                        console.log(res);
+                    })
+                }}>
+                    <Text>233333</Text>
+                </TouchableOpacity>
+                
             </View>
         );
     }

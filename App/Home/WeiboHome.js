@@ -7,11 +7,15 @@ import {
     NativeModules,
     NativeEventEmitter,
     DeviceEventEmitter,
-    Platform
+    Platform,
+    Modal,
+    TouchableOpacity,
+    Animated,
+    Easing
 } from "react-native";
 
 import {
-    Container
+    Container, View
 } from "native-base";
 
 import HomeHeader from './HomeHeader';
@@ -27,7 +31,10 @@ export default class WeiboHome extends Component {
             ischange: true,
             slideLineWidth: sliderLength,
             translationDistance:0,
-            left:0
+            left:0,
+            modalVisible:false,
+            compositeAnim: new Animated.Value(-HEIGHT)
+            
         };
         this.newX = 0;
         this.oldX = 0;
@@ -132,6 +139,25 @@ export default class WeiboHome extends Component {
     render() {
         return (
             <Container>
+                <Modal 
+                    transparent = {true}
+                    visible = {this.state.modalVisible}
+                    onRequestClose = {
+                        ()=>{
+
+                        }
+                    }
+                    animationType ="none">
+                    <TouchableOpacity style={styles.test2} onPress={()=>{
+                         this.setState({
+                            modalVisible:false
+                        })
+                    }}>
+
+                        <Text>close Modal</Text>
+                    </TouchableOpacity>
+                    
+                </Modal>
                 <HomeHeader
                     slideLineWidth = {this.state.slideLineWidth}
                     callback = {(obj)=>this.headerCallback(obj)}
@@ -149,8 +175,47 @@ export default class WeiboHome extends Component {
                     onScroll = {(event)=>this._onScroll(event)}
                     scrollEventThrottle = {60}
                 >
-                    <Text style={styles.test1}></Text>
-                    <Text style={styles.test}></Text>
+                    <View style={styles.test1}>
+                        <TouchableOpacity onPress={()=>{
+                            Animated.sequence([ 
+                            Animated.timing(this.state.compositeAnim, {
+                                toValue: 0,
+                                easing: Easing.ease
+                            }),
+                            // Animated.delay(200), 
+                            // Animated.timing(this.state.compositeAnim, {
+                            //     toValue: 0,
+                            //     easing: Easing.elastic(2),
+                            // }),
+                            // Animated.delay(100), 
+                            // Animated.timing(this.state.compositeAnim, {
+                            //     toValue: 50,
+                            //     easing: Easing.linear,
+                            // }),
+                            // Animated.timing(this.state.compositeAnim, {
+                            //     toValue: 0,
+                            //     easing: Easing.elastic(1),
+                            // })
+                            ]).start();
+                            }}
+                        >
+                            <Animated.View style={{
+                                width:WIDTH,
+                                height:2/3*HEIGHT,
+                                backgroundColor:'pink',
+                                // transform:[{translateY:this.state.anim.interpolate({
+                                //     inputRange:[0,1],
+                                //     outputRange: [0, 300],
+                                // })}]
+                                top:this.state.compositeAnim
+                            }}>
+
+                            </Animated.View>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.test}>
+
+                    </View>
                 </ScrollView>
             </Container>
         );
@@ -161,11 +226,20 @@ const styles = StyleSheet.create({
     test: {
         width:WIDTH,
         height:HEIGHT,
-        backgroundColor:'red'
+        backgroundColor:'red',
     }, 
     test1: {
         width:WIDTH,
         height:HEIGHT,
-        backgroundColor:'blue'
+        backgroundColor:'blue',
+        justifyContent:'flex-start',
+        // alignItems: 'flex-start',
+    }, 
+    test2: {
+        width:WIDTH,
+        height:HEIGHT,
+        // backgroundColor:'blue',
+        justifyContent:'center',
+        alignItems: 'center',
     }, 
 });
