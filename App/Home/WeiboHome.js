@@ -33,8 +33,8 @@ export default class WeiboHome extends Component {
             translationDistance:0,
             left:0,
             modalVisible:false,
-            compositeAnim: new Animated.Value(-HEIGHT)
-            
+            compositeAnim: new Animated.Value(-HEIGHT),
+            opacityAnim: new Animated.Value(0.5)
         };
         this.newX = 0;
         this.oldX = 0;
@@ -43,7 +43,7 @@ export default class WeiboHome extends Component {
         this.maxWidth = WIDTH/4;
         this.minWidth = WIDTH/16;
         this.scrollEnd = true;
-        this.currentTitle = 1;
+        this.currentTitleIndex = 1;
     }
 
     componentDidMount() {
@@ -114,7 +114,7 @@ export default class WeiboHome extends Component {
     }
 
     headerCallback = (obj) => {
-        if (obj.index === this.currentTitle) {
+        if (obj.index === this.currentTitleIndex) {
             // this.props.navigation.push('SelectGroup');
             NativeModules.AddressBookModule.takeContact('233');
             NativeModules.AddressBookModule.promiseMessage('promise').then(
@@ -124,7 +124,7 @@ export default class WeiboHome extends Component {
             ).catch()
             return;
         }else {
-            this.currentTitle = obj.index;
+            this.currentTitleIndex = obj.index;
         }
         if (obj.index === 1){
             this.refs.scrollView.scrollTo({x: 0, y: 0, animated: true})
@@ -148,15 +148,36 @@ export default class WeiboHome extends Component {
                         }
                     }
                     animationType ="none">
-                    <TouchableOpacity style={styles.test2} onPress={()=>{
-                         this.setState({
-                            modalVisible:false
-                        })
-                    }}>
-
-                        <Text>close Modal</Text>
-                    </TouchableOpacity>
-                    
+                     <TouchableOpacity onPress={()=>{
+                            Animated.sequence([ 
+                                Animated.timing(this.state.compositeAnim, {
+                                    toValue: 0,
+                                    easing: Easing.easeInOut,
+                                    duration:300
+                                }),
+                                ]).start();
+                            Animated.timing(this.state.opacityAnim,{
+                                toValue:1,
+                                duration:500
+                            }).start();
+                        }}
+                        >
+                            <Animated.View style={{
+                                width:WIDTH,
+                                height:HEIGHT/2,
+                                backgroundColor:'pink',
+                                top:this.state.compositeAnim,
+                                opacity:this.state.opacityAnim
+                            }}>
+                                <TouchableOpacity style={styles.test2} onPress={()=>{
+                                    this.setState({
+                                        modalVisible:false
+                                    })
+                                }}>
+                                    <Text>close Modal</Text>
+                                </TouchableOpacity>
+                            </Animated.View>
+                        </TouchableOpacity>     
                 </Modal>
                 <HomeHeader
                     slideLineWidth = {this.state.slideLineWidth}
@@ -177,40 +198,11 @@ export default class WeiboHome extends Component {
                 >
                     <View style={styles.test1}>
                         <TouchableOpacity onPress={()=>{
-                            Animated.sequence([ 
-                            Animated.timing(this.state.compositeAnim, {
-                                toValue: 0,
-                                easing: Easing.ease
-                            }),
-                            // Animated.delay(200), 
-                            // Animated.timing(this.state.compositeAnim, {
-                            //     toValue: 0,
-                            //     easing: Easing.elastic(2),
-                            // }),
-                            // Animated.delay(100), 
-                            // Animated.timing(this.state.compositeAnim, {
-                            //     toValue: 50,
-                            //     easing: Easing.linear,
-                            // }),
-                            // Animated.timing(this.state.compositeAnim, {
-                            //     toValue: 0,
-                            //     easing: Easing.elastic(1),
-                            // })
-                            ]).start();
-                            }}
-                        >
-                            <Animated.View style={{
-                                width:WIDTH,
-                                height:2/3*HEIGHT,
-                                backgroundColor:'pink',
-                                // transform:[{translateY:this.state.anim.interpolate({
-                                //     inputRange:[0,1],
-                                //     outputRange: [0, 300],
-                                // })}]
-                                top:this.state.compositeAnim
-                            }}>
-
-                            </Animated.View>
+                                    this.setState({
+                                        modalVisible:true
+                                    })
+                                }}>
+                            <Text>show Modal</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.test}>
@@ -233,12 +225,10 @@ const styles = StyleSheet.create({
         height:HEIGHT,
         backgroundColor:'blue',
         justifyContent:'flex-start',
-        // alignItems: 'flex-start',
     }, 
     test2: {
         width:WIDTH,
         height:HEIGHT,
-        // backgroundColor:'blue',
         justifyContent:'center',
         alignItems: 'center',
     }, 
