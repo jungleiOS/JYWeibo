@@ -135,6 +135,14 @@ export default class WeiboHome extends Component {
             <Container>
                 <CustomModal 
                     modalVisible = {this.state.modalVisible}
+                    titleList = {['默认分组','我的分组','其他']}
+                    tagList = {
+                        [
+                            ['特别关注','群微博','好友圈','全都好友关注','全都关注好友圈密'],
+                            ['特别关注','群微博','好友圈','全都好友关注','全都关注好友圈密'],
+                            ['特别关注','群微博','好友圈','全都好友关注','全都关注好友圈密']
+                        ]
+                    }
                     callback = {()=>{
                         this.setState({
                             modalVisible:false
@@ -180,11 +188,9 @@ export default class WeiboHome extends Component {
 const styles = StyleSheet.create({
     test: {
         width:WIDTH,
-        backgroundColor:'red',
     }, 
     test1: {
         width:WIDTH,
-        backgroundColor:'blue',
         justifyContent:'center',
         alignItems:'center'
     }, 
