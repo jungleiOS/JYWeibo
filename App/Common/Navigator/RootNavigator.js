@@ -2,14 +2,14 @@ import React, {
     Component
 } from 'react';
 
-import WeiboHome from '../Home/WeiboHome';
-import Message from '../Message/Message';
-import Add from '../Add/Add';
-import Found from '../Found/Found';
-import Setting from '../Setting/Setting';
+import WeiboHome from '../../Home/WeiboHome';
+import Message from '../../Message/Message';
+import Add from '../../Add/Add';
+import Found from '../../Found/Found';
+import Setting from '../../Setting/Setting';
 
-import SubMessage from '../Message/SubMessage';
-import SelectGroup from '../Home/SelectGroup.js'
+import SubMessage from '../../Message/SubMessage';
+import SelectGroup from '../../Home/SelectGroup.js'
 
 import {
     createStackNavigator,

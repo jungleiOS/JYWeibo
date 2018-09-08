@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Button, TouchableOpacity} from 'react-native';
-import { Network } from '../Network/Network'
+import { Network } from '../Common/Network/Network'
 export default class Found extends Component {
     render() {
         return (

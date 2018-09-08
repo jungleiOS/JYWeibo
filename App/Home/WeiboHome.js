@@ -8,10 +8,7 @@ import {
     NativeEventEmitter,
     DeviceEventEmitter,
     Platform,
-    Modal,
     TouchableOpacity,
-    Animated,
-    Easing
 } from "react-native";
 
 import {
@@ -19,9 +16,9 @@ import {
 } from "native-base";
 
 import HomeHeader from './HomeHeader';
+import CustomModal from './CustomModal';
 
 const WIDTH = Dimensions.get('window').width;
-const HEIGHT = Dimensions.get('window').height;
 const sliderLength = WIDTH/8;
 
 export default class WeiboHome extends Component {
@@ -33,8 +30,6 @@ export default class WeiboHome extends Component {
             translationDistance:0,
             left:0,
             modalVisible:false,
-            compositeAnim: new Animated.Value(-HEIGHT),
-            opacityAnim: new Animated.Value(0.5)
         };
         this.newX = 0;
         this.oldX = 0;
@@ -115,7 +110,6 @@ export default class WeiboHome extends Component {
 
     headerCallback = (obj) => {
         if (obj.index === this.currentTitleIndex) {
-            // this.props.navigation.push('SelectGroup');
             NativeModules.AddressBookModule.takeContact('233');
             NativeModules.AddressBookModule.promiseMessage('promise').then(
                 (result) => {
@@ -139,46 +133,14 @@ export default class WeiboHome extends Component {
     render() {
         return (
             <Container>
-                <Modal 
-                    transparent = {true}
-                    visible = {this.state.modalVisible}
-                    onRequestClose = {
-                        ()=>{
-
-                        }
-                    }
-                    animationType ="none">
-                     <TouchableOpacity onPress={()=>{
-                            Animated.sequence([ 
-                                Animated.timing(this.state.compositeAnim, {
-                                    toValue: 0,
-                                    easing: Easing.easeInOut,
-                                    duration:300
-                                }),
-                                ]).start();
-                            Animated.timing(this.state.opacityAnim,{
-                                toValue:1,
-                                duration:500
-                            }).start();
-                        }}
-                        >
-                            <Animated.View style={{
-                                width:WIDTH,
-                                height:HEIGHT/2,
-                                backgroundColor:'pink',
-                                top:this.state.compositeAnim,
-                                opacity:this.state.opacityAnim
-                            }}>
-                                <TouchableOpacity style={styles.test2} onPress={()=>{
-                                    this.setState({
-                                        modalVisible:false
-                                    })
-                                }}>
-                                    <Text>close Modal</Text>
-                                </TouchableOpacity>
-                            </Animated.View>
-                        </TouchableOpacity>     
-                </Modal>
+                <CustomModal 
+                    modalVisible = {this.state.modalVisible}
+                    callback = {()=>{
+                        this.setState({
+                            modalVisible:false
+                        });
+                    }}
+                />
                 <HomeHeader
                     slideLineWidth = {this.state.slideLineWidth}
                     callback = {(obj)=>this.headerCallback(obj)}
@@ -201,7 +163,8 @@ export default class WeiboHome extends Component {
                                     this.setState({
                                         modalVisible:true
                                     })
-                                }}>
+                                }}
+                        >
                             <Text>show Modal</Text>
                         </TouchableOpacity>
                     </View>
@@ -217,19 +180,12 @@ export default class WeiboHome extends Component {
 const styles = StyleSheet.create({
     test: {
         width:WIDTH,
-        height:HEIGHT,
         backgroundColor:'red',
     }, 
     test1: {
         width:WIDTH,
-        height:HEIGHT,
         backgroundColor:'blue',
-        justifyContent:'flex-start',
-    }, 
-    test2: {
-        width:WIDTH,
-        height:HEIGHT,
         justifyContent:'center',
-        alignItems: 'center',
+        alignItems:'center'
     }, 
 });
