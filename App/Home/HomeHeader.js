@@ -5,8 +5,7 @@ import {
     Text,
     View,
     TouchableOpacity,
-    Animated,
-    StyleSheet
+    StyleSheet,
 } from 'react-native';
 import {
     Header,
@@ -20,6 +19,7 @@ export default class HomeHeader extends Component {
 
     constructor(props) {
         super(props);
+        
         this.state = {
             textColor1:'#212121',
             textFontSize1:18,
@@ -46,6 +46,11 @@ export default class HomeHeader extends Component {
                 textFontSize2:18,
             });
         }
+    }
+
+    _onLayout = (event) => {
+        let {x, y, width, height} = event.nativeEvent.layout;
+        console.log(x)
     }
 
     render() {
@@ -89,16 +94,19 @@ export default class HomeHeader extends Component {
                                     </Text>
                                 </TouchableOpacity>
                             </View>
-                            <Animated.View style={{
-                                backgroundColor:'#fe9600',
-                                width:this.props.slideLineWidth,
-                                height:2,
-                                marginTop:4,
-                                maxWidth:2*this.props.slideLineWidth,
-                                minWidth:this.props.slideLineWidth,
-                                left:this.props.left
-                                }}>
-                            </Animated.View>
+                            <View 
+                                style={{
+                                    backgroundColor:'#fe9600',
+                                    width:this.props.slideLineWidth,
+                                    height:2,
+                                    marginTop:4,
+                                    maxWidth:2*this.props.slideLineWidth,
+                                    minWidth:this.props.slideLineWidth,
+                                    left:this.props.left
+                                }}
+                                onLayout = {(event)=>this._onLayout(event)}
+                            >
+                            </View>
                         </View>
                     </Body>
                     <Right>

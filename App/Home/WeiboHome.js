@@ -39,6 +39,7 @@ export default class WeiboHome extends Component {
         this.minWidth = WIDTH/16;
         this.scrollEnd = true;
         this.currentTitleIndex = 1;
+        this.scrollEnd = false;
     }
 
     componentDidMount() {
