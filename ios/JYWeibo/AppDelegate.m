@@ -9,6 +9,11 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <UMShare/UMShare.h>
+
+NSString * const SinaKey = @"3414425297";
+NSString * const SinaSecret = @"fc2b4e5cf093bc02c9fac20583dbdd0e";
+NSString * const UMKey = @"5b9609158f4a9d7b83000028";
 
 @implementation AppDelegate
 
@@ -29,7 +34,28 @@
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
+  
+  [self configUSharePlatforms];
+  [self confitUShareSettings];
+  
   return YES;
+}
+
+- (void)configUSharePlatforms {
+  UMSocialManager *socialManager = [UMSocialManager defaultManager];
+  socialManager.umSocialAppkey = UMKey;
+  [socialManager openLog:NO];
+  [socialManager setPlaform:UMSocialPlatformType_Sina appKey:SinaKey appSecret:SinaSecret redirectURL:@"https://www.jianshu.com/"];
+}
+
+- (void)confitUShareSettings {
+  
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url sourceApplication:sourceApplication annotation:annotation];
+  NSLog(@" annotation --->%@",annotation);
+  return result;
 }
 
 @end

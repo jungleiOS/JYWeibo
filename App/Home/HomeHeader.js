@@ -22,7 +22,7 @@ export default class HomeHeader extends Component {
         
         this.state = {
             textColor1:'#212121',
-            textFontSize1:18,
+            textFontSize1:17,
             textColor2:'#797979',
             textFontSize2:15,
         }
@@ -33,7 +33,7 @@ export default class HomeHeader extends Component {
         if (this.currentSelected) {
             this.setState({
                 textColor1:'#212121',
-                textFontSize1:18,
+                textFontSize1:17,
                 textColor2:'#797979',
                 textFontSize2:15,
             });
@@ -43,14 +43,21 @@ export default class HomeHeader extends Component {
                 textColor1:'#797979',
                 textFontSize1:15,
                 textColor2:'#212121',
-                textFontSize2:18,
+                textFontSize2:17,
             });
         }
     }
 
     _onLayout = (event) => {
-        let {x, y, width, height} = event.nativeEvent.layout;
-        console.log(x)
+        let {x} = event.nativeEvent.layout;
+        if (x === 0) {
+            this.currentSelected = true;
+            this.changeTextStyle();
+        }
+        else if ( x >= this.props.slideLineWidth) {
+            this.currentSelected = false;
+            this.changeTextStyle();
+        }
     }
 
     render() {
@@ -68,7 +75,6 @@ export default class HomeHeader extends Component {
                             <View 
                                 style={[styles.titleContainer,{width:this.props.maxWidth}]}>
                                 <TouchableOpacity 
-                                    
                                     onPress={()=>{
                                         this.props.callback({index:1});
                                         this.currentSelected = true;
@@ -78,7 +84,7 @@ export default class HomeHeader extends Component {
                                         color:this.state.textColor1,
                                         fontSize:this.state.textFontSize1
                                     }}>
-                                        关注
+                                    关注
                                     </Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={()=>{
@@ -87,8 +93,8 @@ export default class HomeHeader extends Component {
                                     this.changeTextStyle();
                                 }}>
                                     <Text style={{
-                                        color:this.state.textColor2,
-                                        fontSize:this.state.textFontSize2
+                                        color: this.state.textColor2,
+                                        fontSize: this.state.textFontSize2
                                     }}>
                                         热门
                                     </Text>

@@ -1,0 +1,7 @@
+platform:ios, '9.0'
+target 'JYWeibo' do
+pod 'UMCCommon'
+pod 'UMCSecurityPlugins'
+pod 'UMCShare/UI'
+pod 'UMCShare/Social/ReducedSina'
+end

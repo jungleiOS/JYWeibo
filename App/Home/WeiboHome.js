@@ -27,9 +27,10 @@ export default class WeiboHome extends Component {
         this.state = {
             ischange: true,
             slideLineWidth: sliderLength,
-            translationDistance:0,
-            left:0,
-            modalVisible:false,
+            translationDistance: 0,
+            left: 0,
+            modalVisible: false,
+            titleText: '关注'
         };
         this.newX = 0;
         this.oldX = 0;
@@ -40,6 +41,11 @@ export default class WeiboHome extends Component {
         this.scrollEnd = true;
         this.currentTitleIndex = 1;
         this.scrollEnd = false;
+        this.tagList = [
+            ['全部关注','特别关注','V+微博','好友圈','群微博'],
+            ['逆向','iOS','Android','React Native','SSH','名人明星'],
+            ['特别关注','群微博','好友圈','全都好友关注','全都关注好友圈密']
+        ];
     }
 
     componentDidMount() {
@@ -131,30 +137,35 @@ export default class WeiboHome extends Component {
         }
     }
 
+    modalCallback = (obj) => {
+        this.setState({
+            modalVisible:false,
+            titleText: this.tagList[obj.titleID][obj.tagID]
+        });
+    }
+
+    _onDismiss = () => {
+        if (global.iOS) {
+            NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina();
+        }
+    }
+    
     render() {
         return (
             <Container>
                 <CustomModal 
                     modalVisible = {this.state.modalVisible}
                     titleList = {['默认分组','我的分组','其他']}
-                    tagList = {
-                        [
-                            ['特别关注','群微博','好友圈','全都好友关注','全都关注好友圈密'],
-                            ['特别关注','群微博','好友圈','全都好友关注','全都关注好友圈密'],
-                            ['特别关注','群微博','好友圈','全都好友关注','全都关注好友圈密']
-                        ]
-                    }
-                    callback = {()=>{
-                        this.setState({
-                            modalVisible:false
-                        });
-                    }}
+                    tagList = {this.tagList}
+                    callback = {(obj)=>this.modalCallback(obj)}
+                    onDismiss = {()=>this._onDismiss()}
                 />
                 <HomeHeader
                     slideLineWidth = {this.state.slideLineWidth}
                     callback = {(obj)=>this.headerCallback(obj)}
                     left = {this.state.left}
                     maxWidth = {this.maxWidth}
+                    titleText = {this.state.titleText}
                 />
 
                 <ScrollView 
@@ -169,11 +180,10 @@ export default class WeiboHome extends Component {
                 >
                     <View style={styles.test1}>
                         <TouchableOpacity onPress={()=>{
-                                    this.setState({
-                                        modalVisible:true
-                                    })
-                                }}
-                        >
+                            this.setState({
+                                modalVisible:true
+                            })
+                        }}>
                             <Text>show Modal</Text>
                         </TouchableOpacity>
                     </View>

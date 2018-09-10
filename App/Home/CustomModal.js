@@ -88,7 +88,9 @@ export default class CustomModal extends Component {
                 visible={this.props.modalVisible}
                 onShow= {() => this._onShow()}
                 onRequestClose={() => this.props.callback()}
-                animationType="fade">
+                animationType="fade"
+                onDismiss = {()=>this.props.onDismiss()}
+            >
                 <View
                     style={{
                     backgroundColor: 'rgba(0.45, 0.45, 0.45, 0.1)',
