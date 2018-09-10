@@ -4,4 +4,5 @@ pod 'UMCCommon'
 pod 'UMCSecurityPlugins'
 pod 'UMCShare/UI'
 pod 'UMCShare/Social/ReducedSina'
+pod 'MJExtension'
 end

@@ -1,4 +1,5 @@
 PODS:
+  - MJExtension (3.0.13)
   - UMCCommon (1.4.1)
   - UMCSecurityPlugins (1.0.6)
   - UMCShare/Core (6.8.2):
@@ -11,16 +12,18 @@ PODS:
     - UMCShare/Core
 
 DEPENDENCIES:
+  - MJExtension
   - UMCCommon
   - UMCSecurityPlugins
   - UMCShare/Social/ReducedSina
   - UMCShare/UI
 
 SPEC CHECKSUMS:
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
   UMCCommon: ed0b882a939c45850f6803a5837698572a3e9b96
   UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
   UMCShare: ab74e3c818cd305846609b15b0daf36872213c28
 
-PODFILE CHECKSUM: 1195d39669dfdcf9e963878613fcc3c90cc39a2f
+PODFILE CHECKSUM: 6c283b8c4a1b31a34a0518a963360fa18427fd2a
 
 COCOAPODS: 1.4.0

@@ -9,6 +9,7 @@
 #import "ThirdLoginModule.h"
 #import <React/RCTBridgeModule.h>
 #import <UMShare/UMShare.h>
+#import <MJExtension.h>
 
 @implementation ThirdLoginModule
 RCT_EXPORT_MODULE()
@@ -33,6 +34,27 @@ RCT_EXPORT_METHOD(getAuthWithUserInfoFromSina) {
         NSLog(@"Sina gender: %@", resp.unionGender);
         // 第三方平台SDK源数据
         NSLog(@"Sina originalResponse: %@", resp.originalResponse);
+        NSDate *date = resp.expiration;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        //设置格式：zzz表示时区
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
+        NSString *expirationStr = [dateFormatter stringFromDate:date];
+        NSDictionary *dic = resp.mj_keyValues;
+        NSString *str = [resp mj_JSONString];
+        NSDictionary *jsonDic = @{
+                                  @"uid"              : resp.uid,
+                                  @"accessToken"      : resp.accessToken,
+                                  @"refreshToken"     : resp.refreshToken,
+                                  @"expiration"       : expirationStr,
+                                  @"name"             : resp.name,
+                                  @"iconurl"          : resp.iconurl,
+                                  @"gender"           : resp.unionGender,
+//                                  @"originalResponse" : resp.originalResponse
+                                  };
+        NSError *parseError = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:&parseError];
+        NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"jsonStr ====> %@",jsonStr);
       }
     }];
   });
@@ -41,5 +63,7 @@ RCT_EXPORT_METHOD(getAuthWithUserInfoFromSina) {
 - (NSArray<NSString *> *)supportedEvents {
   return @[@"cur"];
 }
+
+
 
 @end

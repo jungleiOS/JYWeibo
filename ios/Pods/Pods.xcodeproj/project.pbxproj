@@ -7,120 +7,206 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2BC11CBDBC72ABE37547124D6B8E184F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
-		A8133D6CAE376F2943141BA314216409 /* Pods-JYWeibo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 969223D0760FF0203731CF33BE043A6F /* Pods-JYWeibo-dummy.m */; };
+		01417648297353ACB643BD9A3FB13872 /* NSObject+MJProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = B1F113257010AAA4D6E796B4EE9A0224 /* NSObject+MJProperty.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		047212A0948EE82EA03987E12FBDA274 /* MJPropertyType.h in Headers */ = {isa = PBXBuildFile; fileRef = B43C1CE8C47D3C036EF336F52C2614C7 /* MJPropertyType.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0887A17DD9DF1632570C94CA31CFB9E5 /* MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = DDBC656EC4472DDB6548548482A67525 /* MJProperty.m */; };
+		14A9E7B0BE7392524FC07D93C47D7A7F /* MJExtensionConst.h in Headers */ = {isa = PBXBuildFile; fileRef = 82F72BD979344E2A9CB5A4B8E70CEBD2 /* MJExtensionConst.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1B52239818F04048F2521063DDC11527 /* MJPropertyType.m in Sources */ = {isa = PBXBuildFile; fileRef = 35BC256DC611A9CA4FA4A25452C482F7 /* MJPropertyType.m */; };
+		2E0368CB5E43DF5325FAD0D62C1402E4 /* NSObject+MJCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CF4FD5846200855A469E6405DB224E /* NSObject+MJCoding.m */; };
+		3D41E590C2D15195583D8070C49A765B /* NSObject+MJProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CA5638AF9C866903F06F6C78824645 /* NSObject+MJProperty.m */; };
+		4E38D41313B9420037871A67158DAD0F /* NSObject+MJKeyValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 29C8B78BD9AC8416F5723A5436E8B8D7 /* NSObject+MJKeyValue.m */; };
+		4F0107A7976BB48BBDCFF4742BBA39E6 /* MJExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 591BDACFE5858F369CEEC1B036211279 /* MJExtension-dummy.m */; };
+		52E28A0A333684B80D6CD7FFD42865E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		5A0F8D6786E46949D8CA255F369FBD29 /* MJPropertyKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 18E56086A1EEF9C1DD4EBA7FA79E7259 /* MJPropertyKey.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		61B69DCB5CCD6280F5C6B8D820E61110 /* NSObject+MJClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EC4C6279E7CBC364B27452459CC768 /* NSObject+MJClass.m */; };
+		62299AE46BB1695F98625D1125FB905A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		774BFE769BB534897F384F894EF4DC82 /* NSString+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B165E00FE362AA2FD0DE0D9EB433A65E /* NSString+MJExtension.m */; };
+		7E1A1EDE3582F6D5F7860C9265CD84F0 /* NSObject+MJClass.h in Headers */ = {isa = PBXBuildFile; fileRef = 440FF8244465D9845A1E5B8B81A23E9D /* NSObject+MJClass.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		80F0D2D73E4BFA85D98E6CCC269145E9 /* MJPropertyKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 891EA8627F69273E32EAB5C66D496169 /* MJPropertyKey.m */; };
+		80F182D5767ED9A6DF4CC70C8C809E88 /* NSString+MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 49E207E154004015A46E5C2D2919D970 /* NSString+MJExtension.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8B20EF5D3F0C4BA10796A3BE8E15DAF2 /* Pods-JYWeibo-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 969223D0760FF0203731CF33BE043A6F /* Pods-JYWeibo-dummy.m */; };
+		9ED36D73584E73C391D18580D2ACED20 /* MJFoundation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B7790E6CD0CA70ADD6CE0B450EFB9D8 /* MJFoundation.m */; };
+		AD680D4A742F76FCE9211342DD907EB1 /* MJExtensionConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C7BD60CD30BD384601D863891BFC1E /* MJExtensionConst.m */; };
+		DD4C59B7181C25D2D06A168538FE8396 /* MJProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F230CF8C363F2FFA24C32CDD3A48D03 /* MJProperty.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DEC521B675C52F02ACE668EE3C42C17F /* MJExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 6458260A0B2B252FFB6F4A0CFA9DCC2A /* MJExtension.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F80C4A9CA363B54396C43C11FF678779 /* MJFoundation.h in Headers */ = {isa = PBXBuildFile; fileRef = 61C4A5B1795A515F8403518B4C64F517 /* MJFoundation.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F8D707C1BC50C6C73C5ECE8180BFECCF /* NSObject+MJKeyValue.h in Headers */ = {isa = PBXBuildFile; fileRef = F84FD15087DBFAD3BC070382D893552A /* NSObject+MJKeyValue.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F9D58A06E93294F2F80210BA322B6C93 /* NSObject+MJCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = BB2B35F1EB60F316928E402D50EA080B /* NSObject+MJCoding.h */; settings = {ATTRIBUTES = (Project, ); }; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		72E88AC1E141A4F48D8058973DF4BE42 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A316B54C67E947D23CECD230FA5BFAEF;
+			remoteInfo = MJExtension;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		03049DA432FFF2C2732F6FA734835BA0 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UTDID.framework; path = thirdparties/UTDID.framework; sourceTree = "<group>"; };
+		09CA5638AF9C866903F06F6C78824645 /* NSObject+MJProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJProperty.m"; path = "MJExtension/NSObject+MJProperty.m"; sourceTree = "<group>"; };
+		18E56086A1EEF9C1DD4EBA7FA79E7259 /* MJPropertyKey.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJPropertyKey.h; path = MJExtension/MJPropertyKey.h; sourceTree = "<group>"; };
+		24EC4C6279E7CBC364B27452459CC768 /* NSObject+MJClass.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJClass.m"; path = "MJExtension/NSObject+MJClass.m"; sourceTree = "<group>"; };
+		28FD823FEEF32C6A72BB9911721C8CD3 /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = UMSocialSDKPromptResources.bundle; path = UMShare/UMSocialSDKPlugin/UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
+		29C8B78BD9AC8416F5723A5436E8B8D7 /* NSObject+MJKeyValue.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJKeyValue.m"; path = "MJExtension/NSObject+MJKeyValue.m"; sourceTree = "<group>"; };
 		30F4543E0CD108F944CB504C9C785787 /* Pods-JYWeibo-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JYWeibo-frameworks.sh"; sourceTree = "<group>"; };
 		32FBC1C91AFB2BB520BBAF253B30F8FC /* Pods-JYWeibo-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JYWeibo-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4BF1FFC6940215AB7D775A92D8BFD0FF /* libPods-JYWeibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-JYWeibo.a"; path = "libPods-JYWeibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		61C651AA67825A717114160043A35626 /* UMShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMShare.framework; path = UMShare/UMShare.framework; sourceTree = "<group>"; };
-		63C57826888382CB4BF63616C4C619E3 /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = UMSocialSDKResources.bundle; path = UMShare/UMSocialUI/UMSocialSDKResources.bundle; sourceTree = "<group>"; };
+		34489E8DF52504DBD969F3CCBC8CF5CF /* libUMSocialLog.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libUMSocialLog.a; path = UMShare/UMSocialSDKPlugin/libUMSocialLog.a; sourceTree = "<group>"; };
+		35BC256DC611A9CA4FA4A25452C482F7 /* MJPropertyType.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJPropertyType.m; path = MJExtension/MJPropertyType.m; sourceTree = "<group>"; };
+		38B3A63E8D724589915EFA25F63C851A /* UMShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UMShare.framework; path = UMShare/UMShare.framework; sourceTree = "<group>"; };
+		3B7790E6CD0CA70ADD6CE0B450EFB9D8 /* MJFoundation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJFoundation.m; path = MJExtension/MJFoundation.m; sourceTree = "<group>"; };
+		440FF8244465D9845A1E5B8B81A23E9D /* NSObject+MJClass.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJClass.h"; path = "MJExtension/NSObject+MJClass.h"; sourceTree = "<group>"; };
+		4504272EFCF1B1974C894CB8A56A727B /* libPods-JYWeibo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-JYWeibo.a"; path = "libPods-JYWeibo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		49E207E154004015A46E5C2D2919D970 /* NSString+MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+MJExtension.h"; path = "MJExtension/NSString+MJExtension.h"; sourceTree = "<group>"; };
+		4B5BC353E796CE687F8F6AAD90B51EF5 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		591BDACFE5858F369CEEC1B036211279 /* MJExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MJExtension-dummy.m"; sourceTree = "<group>"; };
+		61C4A5B1795A515F8403518B4C64F517 /* MJFoundation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJFoundation.h; path = MJExtension/MJFoundation.h; sourceTree = "<group>"; };
+		6458260A0B2B252FFB6F4A0CFA9DCC2A /* MJExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJExtension.h; path = MJExtension/MJExtension.h; sourceTree = "<group>"; };
 		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		905057976CF2DBFB9D19322FF4255D8D /* SecurityEnvSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityEnvSDK.framework; path = thirdparties/SecurityEnvSDK.framework; sourceTree = "<group>"; };
+		6F230CF8C363F2FFA24C32CDD3A48D03 /* MJProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJProperty.h; path = MJExtension/MJProperty.h; sourceTree = "<group>"; };
+		771405B278140C62A55A9F8F4CE4EC7D /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UTDID.framework; path = thirdparties/UTDID.framework; sourceTree = "<group>"; };
+		82C7BD60CD30BD384601D863891BFC1E /* MJExtensionConst.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJExtensionConst.m; path = MJExtension/MJExtensionConst.m; sourceTree = "<group>"; };
+		82F72BD979344E2A9CB5A4B8E70CEBD2 /* MJExtensionConst.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJExtensionConst.h; path = MJExtension/MJExtensionConst.h; sourceTree = "<group>"; };
+		891EA8627F69273E32EAB5C66D496169 /* MJPropertyKey.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJPropertyKey.m; path = MJExtension/MJPropertyKey.m; sourceTree = "<group>"; };
+		8D5207D6CFC001AC8D8AEB3BE9CC7120 /* SecurityEnvSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SecurityEnvSDK.framework; path = thirdparties/SecurityEnvSDK.framework; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		969223D0760FF0203731CF33BE043A6F /* Pods-JYWeibo-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JYWeibo-dummy.m"; sourceTree = "<group>"; };
-		980AC4753E5D835B37759027B1B4D0AF /* libSocialSina.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libSocialSina.a; path = UMShare/SocialLibraries/Sina/libSocialSina.a; sourceTree = "<group>"; };
 		A10BC85B392F2F3F441705D6EFF40A8E /* Pods-JYWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JYWeibo.debug.xcconfig"; sourceTree = "<group>"; };
-		AF087153E9D233187F078409B9DAA3F2 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		B0CF4FD5846200855A469E6405DB224E /* NSObject+MJCoding.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSObject+MJCoding.m"; path = "MJExtension/NSObject+MJCoding.m"; sourceTree = "<group>"; };
+		B165E00FE362AA2FD0DE0D9EB433A65E /* NSString+MJExtension.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+MJExtension.m"; path = "MJExtension/NSString+MJExtension.m"; sourceTree = "<group>"; };
+		B1F113257010AAA4D6E796B4EE9A0224 /* NSObject+MJProperty.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJProperty.h"; path = "MJExtension/NSObject+MJProperty.h"; sourceTree = "<group>"; };
 		B34224BD6051199E849E16445646134C /* Pods-JYWeibo-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JYWeibo-acknowledgements.plist"; sourceTree = "<group>"; };
-		BC3B95873CC08A037A56201F8CA25131 /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UShareUI.framework; path = UMShare/UMSocialUI/UShareUI.framework; sourceTree = "<group>"; };
-		C5F33D9F0FA171AB0726E9DBC3ABCC2B /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UMSocialSinaHandler.h; path = UMShare/SocialLibraries/Sina/UMSocialSinaHandler.h; sourceTree = "<group>"; };
+		B43C1CE8C47D3C036EF336F52C2614C7 /* MJPropertyType.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MJPropertyType.h; path = MJExtension/MJPropertyType.h; sourceTree = "<group>"; };
+		B4E510C4FEAB3F6533BB59D418341F94 /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UShareUI.framework; path = UMShare/UMSocialUI/UShareUI.framework; sourceTree = "<group>"; };
+		B743D9FEA741AECB2E9DAD03E4604B9C /* libSocialSina.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libSocialSina.a; path = UMShare/SocialLibraries/Sina/libSocialSina.a; sourceTree = "<group>"; };
+		BB2B35F1EB60F316928E402D50EA080B /* NSObject+MJCoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJCoding.h"; path = "MJExtension/NSObject+MJCoding.h"; sourceTree = "<group>"; };
+		BF1C370B3D07B670F075677B0030959B /* libMJExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libMJExtension.a; path = libMJExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2B9C4904D12AC2DDB0CB225F5122573 /* Pods-JYWeibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JYWeibo.release.xcconfig"; sourceTree = "<group>"; };
-		D4AF716BD2AAB32C99D92324DEF222FD /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = UMSocialSDKPromptResources.bundle; path = UMShare/UMSocialSDKPlugin/UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
 		DD7372748D31FF5CFF661816E16581E4 /* Pods-JYWeibo-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JYWeibo-resources.sh"; sourceTree = "<group>"; };
-		FCA8AE0062ECCBD1232DC4AE17C94361 /* libUMSocialLog.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libUMSocialLog.a; path = UMShare/UMSocialSDKPlugin/libUMSocialLog.a; sourceTree = "<group>"; };
+		DDBC656EC4472DDB6548548482A67525 /* MJProperty.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MJProperty.m; path = MJExtension/MJProperty.m; sourceTree = "<group>"; };
+		E38170EF2E4A21EBBE07D2949909A569 /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = UMSocialSDKResources.bundle; path = UMShare/UMSocialUI/UMSocialSDKResources.bundle; sourceTree = "<group>"; };
+		E4EA7C28589BF404484603661EC10C2A /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = UMSocialSinaHandler.h; path = UMShare/SocialLibraries/Sina/UMSocialSinaHandler.h; sourceTree = "<group>"; };
+		EAE32F6B1EC7A5DEE454F511574040A0 /* MJExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MJExtension-prefix.pch"; sourceTree = "<group>"; };
+		EB1901731E047C1A29B1143011EA243B /* MJExtension.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MJExtension.xcconfig; sourceTree = "<group>"; };
+		F84FD15087DBFAD3BC070382D893552A /* NSObject+MJKeyValue.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSObject+MJKeyValue.h"; path = "MJExtension/NSObject+MJKeyValue.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5D6930DCBD6985DFDB541CCDE3307889 /* Frameworks */ = {
+		B57134F14D0B782971053CD2EB92CC0C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2BC11CBDBC72ABE37547124D6B8E184F /* Foundation.framework in Frameworks */,
+				52E28A0A333684B80D6CD7FFD42865E2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C952BA292208C31D189A86DA6FACF3E5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62299AE46BB1695F98625D1125FB905A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		05E61CDC9F40835F8B6758F641F1AF6C /* UMCSecurityPlugins */ = {
+		10CA8C7303F2CF0F795515CB1E0C13C1 /* UMCSecurityPlugins */ = {
 			isa = PBXGroup;
 			children = (
-				6D03A73865D12DFDB8EB2A03CE05E347 /* Frameworks */,
+				39B9D9A10B3FEF64E43396CBA44A7222 /* Frameworks */,
 			);
 			name = UMCSecurityPlugins;
 			path = UMCSecurityPlugins;
 			sourceTree = "<group>";
 		};
-		1273953D9F675C9559261ED8B848D8A8 /* Resources */ = {
+		15BD8A8EE5A97DAE45DD7B79CE0DC3A8 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D4AF716BD2AAB32C99D92324DEF222FD /* UMSocialSDKPromptResources.bundle */,
+				BF1C370B3D07B670F075677B0030959B /* libMJExtension.a */,
+				4504272EFCF1B1974C894CB8A56A727B /* libPods-JYWeibo.a */,
 			);
-			name = Resources;
+			name = Products;
 			sourceTree = "<group>";
 		};
-		1F233D9272BAAAFA8A4115715027E975 /* Frameworks */ = {
+		1B1F6296A3D127C2D057C68E1CDDF0A9 /* UMCCommon */ = {
 			isa = PBXGroup;
 			children = (
-				BC3B95873CC08A037A56201F8CA25131 /* UShareUI.framework */,
+				299328586BFC40A3E9714B2187557469 /* Frameworks */,
 			);
-			name = Frameworks;
+			name = UMCCommon;
+			path = UMCCommon;
 			sourceTree = "<group>";
 		};
-		34243ABD75280B03C0E9EA09913E3A66 /* Pods */ = {
+		21CC7729EFE3BE5EF7B56CFC64177489 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8D767B7B19412E331AC59B425588D6E9 /* UMCCommon */,
-				05E61CDC9F40835F8B6758F641F1AF6C /* UMCSecurityPlugins */,
-				B958B7BE943EE851B139D41B57D3B563 /* UMCShare */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		35AF84C2BB8B3CFA90B521335E84C535 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				980AC4753E5D835B37759027B1B4D0AF /* libSocialSina.a */,
+				34489E8DF52504DBD969F3CCBC8CF5CF /* libUMSocialLog.a */,
+				38B3A63E8D724589915EFA25F63C851A /* UMShare.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		47C6C96BE4095CAAF37420500B3B171C /* ReducedSina */ = {
+		299328586BFC40A3E9714B2187557469 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C5F33D9F0FA171AB0726E9DBC3ABCC2B /* UMSocialSinaHandler.h */,
-				35AF84C2BB8B3CFA90B521335E84C535 /* Frameworks */,
+				4B5BC353E796CE687F8F6AAD90B51EF5 /* UMCommon.framework */,
 			);
-			name = ReducedSina;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		52351E22EC4A1121B8E427E601C8F451 /* Social */ = {
+		35630B53D333E80791A2602A595814AE /* Social */ = {
 			isa = PBXGroup;
 			children = (
-				47C6C96BE4095CAAF37420500B3B171C /* ReducedSina */,
+				7A9583D444F8D230DCD58D700CAAA7C4 /* ReducedSina */,
 			);
 			name = Social;
 			sourceTree = "<group>";
 		};
-		5E07397202D83A11B108812A33BAF4E4 /* Frameworks */ = {
+		39B9D9A10B3FEF64E43396CBA44A7222 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				AF087153E9D233187F078409B9DAA3F2 /* UMCommon.framework */,
+				8D5207D6CFC001AC8D8AEB3BE9CC7120 /* SecurityEnvSDK.framework */,
+				771405B278140C62A55A9F8F4CE4EC7D /* UTDID.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		6D03A73865D12DFDB8EB2A03CE05E347 /* Frameworks */ = {
+		3F866D57AB35279A62F873A3E6B7C783 /* UMCShare */ = {
 			isa = PBXGroup;
 			children = (
-				905057976CF2DBFB9D19322FF4255D8D /* SecurityEnvSDK.framework */,
-				03049DA432FFF2C2732F6FA734835BA0 /* UTDID.framework */,
+				83D60F9C7516BBA0976C57F1DAD392C6 /* Core */,
+				35630B53D333E80791A2602A595814AE /* Social */,
+				6BC315727C262165A7FA08241B93FDF1 /* UI */,
+			);
+			name = UMCShare;
+			path = UMCShare;
+			sourceTree = "<group>";
+		};
+		5CD4FE743052151EFDC6CF2ED44E19B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B743D9FEA741AECB2E9DAD03E4604B9C /* libSocialSina.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6BC315727C262165A7FA08241B93FDF1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				8FB0A92EECEC7F95FCCA2FA214FAF4FC /* Frameworks */,
+				6D5CD3B380C47649E384310B33EA267F /* Resources */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		6D5CD3B380C47649E384310B33EA267F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E38170EF2E4A21EBBE07D2949909A569 /* UMSocialSDKResources.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		71B2370D62261C94934F825724F1973B /* Targets Support Files */ = {
@@ -131,12 +217,13 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		7D169C307EA1951C9BA60C0B080AB637 /* Resources */ = {
+		7A9583D444F8D230DCD58D700CAAA7C4 /* ReducedSina */ = {
 			isa = PBXGroup;
 			children = (
-				63C57826888382CB4BF63616C4C619E3 /* UMSocialSDKResources.bundle */,
+				E4EA7C28589BF404484603661EC10C2A /* UMSocialSinaHandler.h */,
+				5CD4FE743052151EFDC6CF2ED44E19B9 /* Frameworks */,
 			);
-			name = Resources;
+			name = ReducedSina;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -144,28 +231,46 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				34243ABD75280B03C0E9EA09913E3A66 /* Pods */,
-				B52C3BDBF5819A1BF8D22EE055D35D35 /* Products */,
+				DB39102E289BBCA9854626DAE3447541 /* Pods */,
+				15BD8A8EE5A97DAE45DD7B79CE0DC3A8 /* Products */,
 				71B2370D62261C94934F825724F1973B /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8ABA2828F73A11443AA8A9F342D6B594 /* Core */ = {
+		83D60F9C7516BBA0976C57F1DAD392C6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				C499953CDB726DBE81E229D45A047E71 /* Frameworks */,
-				1273953D9F675C9559261ED8B848D8A8 /* Resources */,
+				21CC7729EFE3BE5EF7B56CFC64177489 /* Frameworks */,
+				91563FBDDD2EF3995C0F95F0DC9C7E8F /* Resources */,
 			);
 			name = Core;
 			sourceTree = "<group>";
 		};
-		8D767B7B19412E331AC59B425588D6E9 /* UMCCommon */ = {
+		87D561A59A99F2F72BF4E0C50A8E0D8F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				5E07397202D83A11B108812A33BAF4E4 /* Frameworks */,
+				EB1901731E047C1A29B1143011EA243B /* MJExtension.xcconfig */,
+				591BDACFE5858F369CEEC1B036211279 /* MJExtension-dummy.m */,
+				EAE32F6B1EC7A5DEE454F511574040A0 /* MJExtension-prefix.pch */,
 			);
-			name = UMCCommon;
-			path = UMCCommon;
+			name = "Support Files";
+			path = "../Target Support Files/MJExtension";
+			sourceTree = "<group>";
+		};
+		8FB0A92EECEC7F95FCCA2FA214FAF4FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4E510C4FEAB3F6533BB59D418341F94 /* UShareUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		91563FBDDD2EF3995C0F95F0DC9C7E8F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28FD823FEEF32C6A72BB9911721C8CD3 /* UMSocialSDKPromptResources.bundle */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		B4393CA39A0CAFEE90805DE6A94585B8 /* Pods-JYWeibo */ = {
@@ -183,47 +288,10 @@
 			path = "Target Support Files/Pods-JYWeibo";
 			sourceTree = "<group>";
 		};
-		B52C3BDBF5819A1BF8D22EE055D35D35 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4BF1FFC6940215AB7D775A92D8BFD0FF /* libPods-JYWeibo.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		B8DF2ADD6355A6859820ED26EC2F79F9 /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				1F233D9272BAAAFA8A4115715027E975 /* Frameworks */,
-				7D169C307EA1951C9BA60C0B080AB637 /* Resources */,
-			);
-			name = UI;
-			sourceTree = "<group>";
-		};
-		B958B7BE943EE851B139D41B57D3B563 /* UMCShare */ = {
-			isa = PBXGroup;
-			children = (
-				8ABA2828F73A11443AA8A9F342D6B594 /* Core */,
-				52351E22EC4A1121B8E427E601C8F451 /* Social */,
-				B8DF2ADD6355A6859820ED26EC2F79F9 /* UI */,
-			);
-			name = UMCShare;
-			path = UMCShare;
-			sourceTree = "<group>";
-		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C499953CDB726DBE81E229D45A047E71 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FCA8AE0062ECCBD1232DC4AE17C94361 /* libUMSocialLog.a */,
-				61C651AA67825A717114160043A35626 /* UMShare.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -236,23 +304,103 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		D9F631735A9E56AF8763F2C04B01E41F /* MJExtension */ = {
+			isa = PBXGroup;
+			children = (
+				6458260A0B2B252FFB6F4A0CFA9DCC2A /* MJExtension.h */,
+				82F72BD979344E2A9CB5A4B8E70CEBD2 /* MJExtensionConst.h */,
+				82C7BD60CD30BD384601D863891BFC1E /* MJExtensionConst.m */,
+				61C4A5B1795A515F8403518B4C64F517 /* MJFoundation.h */,
+				3B7790E6CD0CA70ADD6CE0B450EFB9D8 /* MJFoundation.m */,
+				6F230CF8C363F2FFA24C32CDD3A48D03 /* MJProperty.h */,
+				DDBC656EC4472DDB6548548482A67525 /* MJProperty.m */,
+				18E56086A1EEF9C1DD4EBA7FA79E7259 /* MJPropertyKey.h */,
+				891EA8627F69273E32EAB5C66D496169 /* MJPropertyKey.m */,
+				B43C1CE8C47D3C036EF336F52C2614C7 /* MJPropertyType.h */,
+				35BC256DC611A9CA4FA4A25452C482F7 /* MJPropertyType.m */,
+				440FF8244465D9845A1E5B8B81A23E9D /* NSObject+MJClass.h */,
+				24EC4C6279E7CBC364B27452459CC768 /* NSObject+MJClass.m */,
+				BB2B35F1EB60F316928E402D50EA080B /* NSObject+MJCoding.h */,
+				B0CF4FD5846200855A469E6405DB224E /* NSObject+MJCoding.m */,
+				F84FD15087DBFAD3BC070382D893552A /* NSObject+MJKeyValue.h */,
+				29C8B78BD9AC8416F5723A5436E8B8D7 /* NSObject+MJKeyValue.m */,
+				B1F113257010AAA4D6E796B4EE9A0224 /* NSObject+MJProperty.h */,
+				09CA5638AF9C866903F06F6C78824645 /* NSObject+MJProperty.m */,
+				49E207E154004015A46E5C2D2919D970 /* NSString+MJExtension.h */,
+				B165E00FE362AA2FD0DE0D9EB433A65E /* NSString+MJExtension.m */,
+				87D561A59A99F2F72BF4E0C50A8E0D8F /* Support Files */,
+			);
+			name = MJExtension;
+			path = MJExtension;
+			sourceTree = "<group>";
+		};
+		DB39102E289BBCA9854626DAE3447541 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D9F631735A9E56AF8763F2C04B01E41F /* MJExtension */,
+				1B1F6296A3D127C2D057C68E1CDDF0A9 /* UMCCommon */,
+				10CA8C7303F2CF0F795515CB1E0C13C1 /* UMCSecurityPlugins */,
+				3F866D57AB35279A62F873A3E6B7C783 /* UMCShare */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		864D7FF60E899EA81A55C0B7F82FC174 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DEC521B675C52F02ACE668EE3C42C17F /* MJExtension.h in Headers */,
+				14A9E7B0BE7392524FC07D93C47D7A7F /* MJExtensionConst.h in Headers */,
+				F80C4A9CA363B54396C43C11FF678779 /* MJFoundation.h in Headers */,
+				DD4C59B7181C25D2D06A168538FE8396 /* MJProperty.h in Headers */,
+				5A0F8D6786E46949D8CA255F369FBD29 /* MJPropertyKey.h in Headers */,
+				047212A0948EE82EA03987E12FBDA274 /* MJPropertyType.h in Headers */,
+				7E1A1EDE3582F6D5F7860C9265CD84F0 /* NSObject+MJClass.h in Headers */,
+				F9D58A06E93294F2F80210BA322B6C93 /* NSObject+MJCoding.h in Headers */,
+				F8D707C1BC50C6C73C5ECE8180BFECCF /* NSObject+MJKeyValue.h in Headers */,
+				01417648297353ACB643BD9A3FB13872 /* NSObject+MJProperty.h in Headers */,
+				80F182D5767ED9A6DF4CC70C8C809E88 /* NSString+MJExtension.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		A58F1A4D4965EF4E7F2A1D4A93E415AB /* Pods-JYWeibo */ = {
+		A316B54C67E947D23CECD230FA5BFAEF /* MJExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E4CAFD3738E65916181A01150EAE843 /* Build configuration list for PBXNativeTarget "Pods-JYWeibo" */;
+			buildConfigurationList = 64EE246612F53A73C8FBFCEC3A61508A /* Build configuration list for PBXNativeTarget "MJExtension" */;
 			buildPhases = (
-				72B2525A4FA9CF73C9585759CA928A86 /* Sources */,
-				5D6930DCBD6985DFDB541CCDE3307889 /* Frameworks */,
+				DE3C7F77ACB98406106FD6A2FC240643 /* Sources */,
+				B57134F14D0B782971053CD2EB92CC0C /* Frameworks */,
+				864D7FF60E899EA81A55C0B7F82FC174 /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
+			name = MJExtension;
+			productName = MJExtension;
+			productReference = BF1C370B3D07B670F075677B0030959B /* libMJExtension.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F759CC1A0EDCEF02A3DE869E7FD8D678 /* Pods-JYWeibo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7091B3F424DC10965C39472C851ADFE3 /* Build configuration list for PBXNativeTarget "Pods-JYWeibo" */;
+			buildPhases = (
+				182B2DEE7CC5CEF5749F94425E63037A /* Sources */,
+				C952BA292208C31D189A86DA6FACF3E5 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C6D4625C6158D6D0005AA260A586DEB9 /* PBXTargetDependency */,
+			);
 			name = "Pods-JYWeibo";
 			productName = "Pods-JYWeibo";
-			productReference = 4BF1FFC6940215AB7D775A92D8BFD0FF /* libPods-JYWeibo.a */;
+			productReference = 4504272EFCF1B1974C894CB8A56A727B /* libPods-JYWeibo.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -272,48 +420,78 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = B52C3BDBF5819A1BF8D22EE055D35D35 /* Products */;
+			productRefGroup = 15BD8A8EE5A97DAE45DD7B79CE0DC3A8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A58F1A4D4965EF4E7F2A1D4A93E415AB /* Pods-JYWeibo */,
+				A316B54C67E947D23CECD230FA5BFAEF /* MJExtension */,
+				F759CC1A0EDCEF02A3DE869E7FD8D678 /* Pods-JYWeibo */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		72B2525A4FA9CF73C9585759CA928A86 /* Sources */ = {
+		182B2DEE7CC5CEF5749F94425E63037A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8133D6CAE376F2943141BA314216409 /* Pods-JYWeibo-dummy.m in Sources */,
+				8B20EF5D3F0C4BA10796A3BE8E15DAF2 /* Pods-JYWeibo-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE3C7F77ACB98406106FD6A2FC240643 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F0107A7976BB48BBDCFF4742BBA39E6 /* MJExtension-dummy.m in Sources */,
+				AD680D4A742F76FCE9211342DD907EB1 /* MJExtensionConst.m in Sources */,
+				9ED36D73584E73C391D18580D2ACED20 /* MJFoundation.m in Sources */,
+				0887A17DD9DF1632570C94CA31CFB9E5 /* MJProperty.m in Sources */,
+				80F0D2D73E4BFA85D98E6CCC269145E9 /* MJPropertyKey.m in Sources */,
+				1B52239818F04048F2521063DDC11527 /* MJPropertyType.m in Sources */,
+				61B69DCB5CCD6280F5C6B8D820E61110 /* NSObject+MJClass.m in Sources */,
+				2E0368CB5E43DF5325FAD0D62C1402E4 /* NSObject+MJCoding.m in Sources */,
+				4E38D41313B9420037871A67158DAD0F /* NSObject+MJKeyValue.m in Sources */,
+				3D41E590C2D15195583D8070C49A765B /* NSObject+MJProperty.m in Sources */,
+				774BFE769BB534897F384F894EF4DC82 /* NSString+MJExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		C6D4625C6158D6D0005AA260A586DEB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MJExtension;
+			target = A316B54C67E947D23CECD230FA5BFAEF /* MJExtension */;
+			targetProxy = 72E88AC1E141A4F48D8058973DF4BE42 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		5BE9E070CECEDBAF4E11C3051E971510 /* Debug */ = {
+		23D61C1D45BC0F2823F2E043E31B098A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A10BC85B392F2F3F441705D6EFF40A8E /* Pods-JYWeibo.debug.xcconfig */;
+			baseConfigurationReference = EB1901731E047C1A29B1143011EA243B /* MJExtension.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				MACH_O_TYPE = staticlib;
+				GCC_PREFIX_HEADER = "Target Support Files/MJExtension/MJExtension-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
-		669757AFC1B47AF5BBC896064A094A1C /* Release */ = {
+		2BEA6BAAF2AE161CEAC9801E81D596BC /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D2B9C4904D12AC2DDB0CB225F5122573 /* Pods-JYWeibo.release.xcconfig */;
 			buildSettings = {
@@ -333,6 +511,27 @@
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
+		};
+		3009569709848BE2C3C56FA7EEA7A5E2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB1901731E047C1A29B1143011EA243B /* MJExtension.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/MJExtension/MJExtension-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 		6F9224530522DD3C735EC96CF142642E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -449,23 +648,52 @@
 			};
 			name = Debug;
 		};
+		BB6152AD2C9B4C38DB984F6543503B7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A10BC85B392F2F3F441705D6EFF40A8E /* Pods-JYWeibo.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E4CAFD3738E65916181A01150EAE843 /* Build configuration list for PBXNativeTarget "Pods-JYWeibo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5BE9E070CECEDBAF4E11C3051E971510 /* Debug */,
-				669757AFC1B47AF5BBC896064A094A1C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B57951D085A1B98A97F8A1062A5E5C5B /* Debug */,
 				6F9224530522DD3C735EC96CF142642E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64EE246612F53A73C8FBFCEC3A61508A /* Build configuration list for PBXNativeTarget "MJExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3009569709848BE2C3C56FA7EEA7A5E2 /* Debug */,
+				23D61C1D45BC0F2823F2E043E31B098A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7091B3F424DC10965C39472C851ADFE3 /* Build configuration list for PBXNativeTarget "Pods-JYWeibo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB6152AD2C9B4C38DB984F6543503B7F /* Debug */,
+				2BEA6BAAF2AE161CEAC9801E81D596BC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

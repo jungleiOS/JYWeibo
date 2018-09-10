@@ -74,6 +74,7 @@
 		C7B1C01B21465ABC00C00791 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7B1C00D21465ABC00C00791 /* SimpleLineIcons.ttf */; };
 		C7B1C01C21465ABC00C00791 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C7B1C00E21465ABC00C00791 /* MaterialIcons.ttf */; };
 		CFC41B01892342BA8C841904 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D24A2A9DD30947C4B8338694 /* FontAwesome5_Solid.ttf */; };
+		D6B360222146B7CB00D9CF1F /* SinaOriginResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D6B360212146B7CB00D9CF1F /* SinaOriginResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -427,6 +428,8 @@
 		C7B1C00E21465ABC00C00791 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		CBB1737F383440E4A271105D /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/native-base/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		D24A2A9DD30947C4B8338694 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
+		D6B360202146B7CB00D9CF1F /* SinaOriginResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SinaOriginResponse.h; sourceTree = "<group>"; };
+		D6B360212146B7CB00D9CF1F /* SinaOriginResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SinaOriginResponse.m; sourceTree = "<group>"; };
 		FF5095D0FF6CEACAFC04EE2C /* Pods-JYWeibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JYWeibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JYWeibo/Pods-JYWeibo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -725,6 +728,8 @@
 			children = (
 				C7B1BF5B2146534900C00791 /* ThirdLoginModule.h */,
 				C7B1BF5C2146534900C00791 /* ThirdLoginModule.m */,
+				D6B360202146B7CB00D9CF1F /* SinaOriginResponse.h */,
+				D6B360212146B7CB00D9CF1F /* SinaOriginResponse.m */,
 			);
 			path = ThirdLoginModule;
 			sourceTree = "<group>";
@@ -1406,6 +1411,7 @@
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				C7B1BF832146534900C00791 /* ThirdLoginModule.m in Sources */,
 				C718895421354D8B004DA310 /* CallAdressbookViewController.m in Sources */,
+				D6B360222146B7CB00D9CF1F /* SinaOriginResponse.m in Sources */,
 				C726BC3D213515E5008E0E25 /* AddressBookModule.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
