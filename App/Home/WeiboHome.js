@@ -146,7 +146,9 @@ export default class WeiboHome extends Component {
 
     _onDismiss = () => {
         if (global.iOS) {
-            NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina();
+            NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina((info)=>{
+                console.log(info);
+            });
         }
     }
     

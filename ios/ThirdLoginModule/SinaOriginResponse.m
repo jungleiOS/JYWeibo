@@ -8,6 +8,33 @@
 
 #import "SinaOriginResponse.h"
 
-@implementation SinaOriginResponse
+@implementation Insecurity
+@end
 
+
+@implementation Visible
+@end
+
+
+@implementation Comment_manage_info
+@end
+
+
+@implementation Status
++ (NSDictionary *)mj_rereplacedKeyFromPropertyName {
+  return @{
+           @"user_id":@"id"
+           };
+}
+@end
+
+
+@implementation SinaOriginResponse
++ (NSDictionary *)mj_rereplacedKeyFromPropertyName {
+  return @{
+            @"sina_id":@"id",
+            @"classify":@"class",
+            @"sina_description":@"description"
+           };
+}
 @end

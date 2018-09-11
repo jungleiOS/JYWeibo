@@ -33,8 +33,6 @@ RCT_EXPORT_METHOD(takeContact:(NSString *)msg) {
       [self sendAllMessage];
     }];
   });
-  
-//  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(calendarEventReminderReceived:) name:@"Num" object:nil];
 }
 
 - (void)sendAllMessage {
