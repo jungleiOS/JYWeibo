@@ -1,5 +1,7 @@
 package com.jyweibo;
 
+import android.content.Intent;
+
 import com.facebook.react.ReactActivity;
 import com.oblador.vectoricons.VectorIconsPackage;
 import java.util.Arrays;
@@ -25,4 +27,5 @@ public class MainActivity extends ReactActivity {
             new VectorIconsPackage()
         );
     }
+
 }

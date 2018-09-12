@@ -142,14 +142,15 @@ export default class WeiboHome extends Component {
             modalVisible:false,
             titleText: this.tagList[obj.titleID][obj.tagID]
         });
+        NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina(()=>{
+
+        });
     }
 
     _onDismiss = () => {
-        if (global.iOS) {
-            NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina((info)=>{
-                console.log(info);
-            });
-        }
+        NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina((info)=>{
+            console.log(info);
+        });
     }
     
     render() {

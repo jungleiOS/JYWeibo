@@ -1,6 +1,9 @@
 package com.jyweibo;
 
+import android.app.Activity;
 import android.app.Application;
+import android.os.Build;
+import android.os.Bundle;
 
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
@@ -8,12 +11,13 @@ import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
 import com.umeng.commonsdk.UMConfigure;
+import com.umeng.socialize.PlatformConfig;
 import java.util.Arrays;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-
+  public Activity mCurrentActivity;
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
     @Override
@@ -25,7 +29,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-              new AddressBookModulePackage()
+              new AddressBookModulePackage(),
+              new ThirdLoginModulePackage()
       );
     }
 
@@ -46,6 +51,52 @@ public class MainApplication extends Application implements ReactApplication {
     SoLoader.init(this, /* native exopackage */ false);
     UMConfigure.init(this,"5b974b458f4a9d622c000173"
             ,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
-//    PlatformConfig.setSinaWeibo("3414425297", "fc2b4e5cf093bc02c9fac20583dbdd0e","https://www.jianshu.com/");
+    currentActivity();
   }
+  private void currentActivity() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+      registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
+
+        @Override
+        public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
+          mCurrentActivity = activity;
+        }
+
+        @Override
+        public void onActivityStarted(Activity activity) {
+
+        }
+
+        @Override
+        public void onActivityResumed (Activity activity) {
+
+        }
+
+        @Override
+        public void onActivityPaused(Activity activity) {
+
+        }
+
+        @Override
+        public void onActivityStopped(Activity activity) {
+
+        }
+
+        @Override
+        public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
+
+        }
+
+        @Override
+        public void onActivityDestroyed(Activity activity) {
+
+        }
+
+      });
+    }
+  }
+  {
+    PlatformConfig.setSinaWeibo("3414425297", "fc2b4e5cf093bc02c9fac20583dbdd0e","https://www.jianshu.com/");
+  }
+
 }
