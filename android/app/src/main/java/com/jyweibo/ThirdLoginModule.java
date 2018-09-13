@@ -69,7 +69,6 @@ public class ThirdLoginModule extends ReactContextBaseJavaModule {
             Toast.makeText(aContext, "取消了", Toast.LENGTH_LONG).show();
         }
     };
-    MainApplication application;
 
     private final ActivityEventListener mActivityEventListener = new BaseActivityEventListener() {
         @Override
@@ -91,8 +90,13 @@ public class ThirdLoginModule extends ReactContextBaseJavaModule {
 
     @ReactMethod
     public void getAuthWithUserInfoFromSina(Callback callback) {
-        Log.i("RN","23333");
-        umShareAPI.getPlatformInfo(, SHARE_MEDIA.SINA, umAuthListener);
+
+        Activity activity = getCurrentActivity();
+//       Log.i("Eum", String.valueOf(SHARE_MEDIA.SINA));
+//       if (umAuthListener == null) {
+//           Log.i("RN","23333");
+//       }
+        UMShareAPI.get(aContext).getPlatformInfo(activity, SHARE_MEDIA.SINA, umAuthListener);
         WritableMap contactMap = Arguments.createMap();
         contactMap.putString("name","android");
         contactMap.putString("phoneNumber","15520061222");
