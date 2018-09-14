@@ -51,49 +51,7 @@ public class MainApplication extends Application implements ReactApplication {
     SoLoader.init(this, /* native exopackage */ false);
     UMConfigure.init(this,"5b974b458f4a9d622c000173"
             ,"umeng",UMConfigure.DEVICE_TYPE_PHONE,"");
-    currentActivity();
-  }
-  private void currentActivity() {
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-      registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
-
-        @Override
-        public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
-          mCurrentActivity = activity;
-        }
-
-        @Override
-        public void onActivityStarted(Activity activity) {
-
-        }
-
-        @Override
-        public void onActivityResumed (Activity activity) {
-
-        }
-
-        @Override
-        public void onActivityPaused(Activity activity) {
-
-        }
-
-        @Override
-        public void onActivityStopped(Activity activity) {
-
-        }
-
-        @Override
-        public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-
-        }
-
-        @Override
-        public void onActivityDestroyed(Activity activity) {
-
-        }
-
-      });
-    }
+    UMConfigure.setLogEnabled(true);
   }
   {
     PlatformConfig.setSinaWeibo("3414425297", "fc2b4e5cf093bc02c9fac20583dbdd0e","https://www.jianshu.com/");

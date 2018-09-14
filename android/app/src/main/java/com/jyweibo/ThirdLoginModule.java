@@ -2,6 +2,8 @@ package com.jyweibo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.UMAuthListener;
 
 import java.util.Map;
+
 
 public class ThirdLoginModule extends ReactContextBaseJavaModule {
 
@@ -92,11 +95,8 @@ public class ThirdLoginModule extends ReactContextBaseJavaModule {
     public void getAuthWithUserInfoFromSina(Callback callback) {
 
         Activity activity = getCurrentActivity();
-//       Log.i("Eum", String.valueOf(SHARE_MEDIA.SINA));
-//       if (umAuthListener == null) {
-//           Log.i("RN","23333");
-//       }
         UMShareAPI.get(aContext).getPlatformInfo(activity, SHARE_MEDIA.SINA, umAuthListener);
+
         WritableMap contactMap = Arguments.createMap();
         contactMap.putString("name","android");
         contactMap.putString("phoneNumber","15520061222");
