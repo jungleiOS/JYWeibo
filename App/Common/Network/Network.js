@@ -1,17 +1,16 @@
-import forge from 'node-forge';
-class NetworkType {
-    constructor(API) {
-        this.API = API;
-    }
-    getAPI() {
-        return this.API;
-    }
-}
+// class NetworkType {
+//     constructor(API) {
+//         this.API = API;
+//     }
+//     getAPI() {
+//         return this.API;
+//     }
+// }
 
-NetworkType.TEST = new NetworkType('http://testa-app.51h99.net/api/');
-NetworkType.FORMAL = new NetworkType('https://apia.jiumaster.com/api/');
+// NetworkType.TEST = new NetworkType('http://testa-app.51h99.net/api/');
+// NetworkType.FORMAL = new NetworkType('https://apia.jiumaster.com/api/');
 
-Object.freeze(NetworkType);
+// Object.freeze(NetworkType);
 
 const Network = {
     
@@ -20,7 +19,7 @@ const Network = {
             method: 'POST',
             body: data
         }
-        let completeURL = NetworkType.FORMAL + url;
+       
         fetch(url, fetchOptions)
         .then((response) => response.json())
         .then((responseData) => {
@@ -31,8 +30,7 @@ const Network = {
         });
     },
 
-    get: (callback) =>{
-        let completeURL = NetworkType.FORMAL.API+'/WineMarket/GetProductList?PageIndex=0&PageSize=20&SortRule=1&SortType=3';
+    get: (url,data,callback) =>{
         fetch(completeURL)
         .then((response) => response.json())
         .then((responseData) => {
