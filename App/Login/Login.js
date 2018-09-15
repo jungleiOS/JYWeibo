@@ -5,7 +5,8 @@ import {
     TextInput, 
     TouchableOpacity,
     Dimensions,
-    StyleSheet
+    StyleSheet,
+    NativeModules,
  } from 'react-native';
 const WIDTH = Dimensions.get('window').width;
 export default class WeiboHome extends Component {
@@ -18,7 +19,6 @@ export default class WeiboHome extends Component {
     }
 
     render() {
-        console.log('====> '+ this.ischange)
         return (
             <View 
                 style={{ flex: 1, flexDirection:"column",justifyContent:'space-between'}}>
@@ -33,8 +33,13 @@ export default class WeiboHome extends Component {
                         <TextInput 
                             style={styles.input} 
                             placeholder='密码'
-                            clearButtonMode />
-                        <TouchableOpacity style={styles.loginBtn}>
+                            clearButtonMode={'always'} />
+                        <TouchableOpacity 
+                            style={styles.loginBtn}
+                            onPress={()=>NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina(()=>{
+
+                            })}
+                        >
                             <Text style={{color:'white'}}>登录</Text>
                         </TouchableOpacity>
                         
@@ -51,7 +56,7 @@ export default class WeiboHome extends Component {
                     onPress={()=>{
                         this.setState({
                             ischange:!this.state.ischange
-                        })
+                        });
                     }}>
                     <Text style={{left:15}}>还没有账号?请<Text style={{color:'black'}}>注册</Text></Text>
                 </TouchableOpacity>
@@ -68,7 +73,7 @@ export class Test extends Component {
             <TextInput 
             style={this.props.ischange ? styles.input : styles.input1 }
             placeholder="请输入邮箱或手机号码"
-            clearButtonMode />
+            clearButtonMode={'always'} />
         );
     }
 }
