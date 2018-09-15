@@ -1,16 +1,3 @@
-// class NetworkType {
-//     constructor(API) {
-//         this.API = API;
-//     }
-//     getAPI() {
-//         return this.API;
-//     }
-// }
-
-// NetworkType.TEST = new NetworkType('http://testa-app.51h99.net/api/');
-// NetworkType.FORMAL = new NetworkType('https://apia.jiumaster.com/api/');
-
-// Object.freeze(NetworkType);
 
 const Network = {
     
@@ -30,8 +17,19 @@ const Network = {
         });
     },
 
-    get: (url,data,callback) =>{
-        fetch(completeURL)
+    get: (url,params,callback) =>{
+        if (params) {  
+            let paramsArray = [];  
+            //拼接参数  
+            Object.keys(params).forEach(key => paramsArray.push(key + '=' + params[key]))  
+            if (url.search(/\?/) === -1) {  
+                url += '?' + paramsArray.join('&')  
+            } else {  
+                url += '&' + paramsArray.join('&')  
+            }  
+        }  
+
+        fetch(url)
         .then((response) => response.json())
         .then((responseData) => {
             callback(responseData);
@@ -44,4 +42,4 @@ const Network = {
 
 }
 
-export { NetworkType, Network }
+export { Network }

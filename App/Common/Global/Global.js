@@ -2,6 +2,8 @@ import { Dimensions, Platform, Alert, PixelRatio} from 'react-native';
 // iPhoneX
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
+const Height = Dimensions.get('window').height;
+const Width = Dimensions.get('window').width;
 
 const isIphoneX = () => {
     let screenW = Dimensions.get('window').width;
@@ -27,9 +29,9 @@ const headerHeight = () => {
 // 导航栏高度
 global.HEADER_HEIGHT = headerHeight();
 // 屏幕高度
-global.SCREEN_HEIGHT = Dimensions.get('window').height;
+global.SCREEN_HEIGHT = Height;
 // 屏幕宽度
-global.SCREEN_WIDTH = Dimensions.get('window').width;
+global.SCREEN_WIDTH = Width;
 // 判断iPhoneX
 global.iPhoneX = isIphoneX();
 // 系统是iOS

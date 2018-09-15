@@ -17,6 +17,10 @@ import {
 
 import HomeHeader from './HomeHeader';
 import CustomModal from './CustomModal';
+import WeiboList from './WeiboList';
+
+import { Network } from '../Common/Network/Network';
+import * as SinaAPI from '../Common/Network/SinaWeiboAPI';
 
 const WIDTH = Dimensions.get('window').width;
 const sliderLength = WIDTH/8;
@@ -151,7 +155,14 @@ export default class WeiboHome extends Component {
 
     _onDismiss = () => {
         NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina((info)=>{
-            console.log(info);
+            let base_info = JSON.parse(info.baseJSONStr);
+            console.log(base_info);
+            let params = {
+                'access_token':base_info.accessToken
+            };
+            Network.get(SinaAPI.home_timeline,params,(data)=>{
+                console.log(data);
+            });
         });
     }
     
@@ -184,13 +195,14 @@ export default class WeiboHome extends Component {
                     scrollEventThrottle = {60}
                 >
                     <View style={styles.test1}>
-                        <TouchableOpacity onPress={()=>{
+                        {/* <TouchableOpacity onPress={()=>{
                             this.setState({
                                 modalVisible:true
                             })
                         }}>
                             <Text>show Modal</Text>
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
+                        <WeiboList/>
                     </View>
                     <View style={styles.test}>
 
