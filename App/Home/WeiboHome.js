@@ -205,7 +205,11 @@ export default class WeiboHome extends Component {
                         <WeiboList/>
                     </View>
                     <View style={styles.test}>
-
+                        <TouchableOpacity onLongPress={()=>{
+                            this.props.navigation.navigate('Auth');
+                        }}>
+                            <Text>去登录</Text>
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </Container>

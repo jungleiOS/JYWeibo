@@ -9,7 +9,8 @@ import Found from '../../Found/Found';
 import Setting from '../../Setting/Setting';
 
 import SubMessage from '../../Message/SubMessage';
-import SelectGroup from '../../Home/SelectGroup.js'
+import SelectGroup from '../../Home/SelectGroup';
+import Login from '../../Login/Login';
 
 import {
     createStackNavigator,
@@ -58,7 +59,6 @@ const SettingStack = createStackNavigator({
     Setting: {
         screen: Setting,
         navigationOptions: {
-            // title: '首页',
             header:null
         }
     },
@@ -114,7 +114,8 @@ const DrawerNavigator = createDrawerNavigator({
 });
 
 const AppNavigator = createSwitchNavigator({
-    Home: DrawerNavigator
+    Home: DrawerNavigator,
+    Auth: Login
 });
 
 

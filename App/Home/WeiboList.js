@@ -13,10 +13,6 @@ import UserBaseInfo from './UserBaseInfo';
 
 export default class WeiboList extends Component {
 
-    state = {
-        selected: (new Map())
-    };
-
     constructor(props) {
         super(props);
         this.data = [
@@ -40,9 +36,7 @@ export default class WeiboList extends Component {
     }
 
     _onPressItem = (id) => {
-        // updater functions are preferred for transactional updates
         this.setState((state) => {
-            // copy the map rather than modifying state.
             const selected = new Map(state.selected);
             selected.set(id, !selected.get(id)); // toggle
             return {selected};
