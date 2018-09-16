@@ -11,6 +11,7 @@ import Setting from '../../Setting/Setting';
 import SubMessage from '../../Message/SubMessage';
 import SelectGroup from '../../Home/SelectGroup';
 import Login from '../../Login/Login';
+import LunchPage from '../../Login/LunchScreen';
 
 import {
     createStackNavigator,
@@ -114,9 +115,9 @@ const DrawerNavigator = createDrawerNavigator({
 });
 
 const AppNavigator = createSwitchNavigator({
+    Lunch: LunchPage,
     Home: DrawerNavigator,
     Auth: Login
 });
-
 
 export { AppNavigator };

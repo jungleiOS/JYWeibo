@@ -8,6 +8,9 @@ import {
     StyleSheet,
     NativeModules,
  } from 'react-native';
+
+import { storeData } from '../Login/LoginState'; 
+
 const WIDTH = Dimensions.get('window').width;
 export default class WeiboHome extends Component {
     
@@ -36,8 +39,10 @@ export default class WeiboHome extends Component {
                             clearButtonMode={'always'} />
                         <TouchableOpacity 
                             style={styles.loginBtn}
-                            onPress={()=>NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina(()=>{
-
+                            onPress={()=>NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina((info)=>{
+                                this.props.navigation.navigate('Home');
+                                let base_info = JSON.parse(info.baseJSONStr);
+                                storeData('token',base_info.accessToken)
                             })}
                         >
                             <Text style={{color:'white'}}>登录</Text>
