@@ -9,7 +9,7 @@ import {
     NativeModules,
  } from 'react-native';
 
-import { storeData } from '../Login/LoginState'; 
+import { storeData } from '../Common/Storage/Storage'; 
 
 const WIDTH = Dimensions.get('window').width;
 export default class WeiboHome extends Component {

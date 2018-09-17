@@ -8,7 +8,7 @@ import {
     Image
  } from 'react-native';
 
-import { readData } from './LoginState'
+import { readData } from '../Common/Storage/Storage'
 
 const user_token = 'token';
 const WIDTH = Dimensions.get('window').width;
