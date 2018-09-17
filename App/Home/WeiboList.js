@@ -11,6 +11,10 @@ import {
 
 import UserBaseInfo from './UserBaseInfo';
 
+import { Network } from '../Common/Network/Network';
+import * as SinaAPI from '../Common/Network/SinaWeiboAPI';
+import { readData } from '../Common/Storage/Storage';
+
 export default class WeiboList extends Component {
 
     constructor(props) {
@@ -31,8 +35,29 @@ export default class WeiboList extends Component {
             }
         ];
         this.state = {
-            selected: (new Map())
+            selected: (new Map()),
+            dataSource: []
         };
+    }
+
+    componentDidMount() {
+        // 去掉a标签
+        // str = str.replace(/(<\/?a.*?>)|(<\/?span.*?>)/g,'');
+        
+        this.loadData((data)=>{
+            console.log(data);
+            this.setState({
+                dataSource:data.statuses
+            });
+        });
+        
+    }
+
+    loadData = (callback)=>{
+        readData('token',(value)=>{
+            let params = {'access_token':value}
+            Network.get(SinaAPI.home_timeline,params,(data) => callback(data));
+        });
     }
 
     _onPressItem = (id) => {
@@ -43,14 +68,13 @@ export default class WeiboList extends Component {
         });
     };
 
-    _keyExtractor = (item, index) => item.id;
+    _keyExtractor = (item, index) => item.id.toString();
 
     _renderItem = ({item}) => (
         <MyListItem
-            id={item.id}
+            item={item}
             onPressItem={this._onPressItem}
             selected={!!this.state.selected.get(item.id)}
-            title={item.title}
         />
     );
 
@@ -67,7 +91,7 @@ export default class WeiboList extends Component {
     render() {
         return (
             <FlatList
-                data={this.data}
+                data={this.state.dataSource}
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
                 ItemSeparatorComponent={this._itemSeparatorComponent}
@@ -77,36 +101,42 @@ export default class WeiboList extends Component {
 }
 
 class MyListItem extends React.PureComponent {
+
     _onPress = () => {
-        this.props.onPressItem(this.props.id);
+        this.props.onPressItem(this.props.item.id);
     };
 
-    render() {
+    
 
+    render() {
+        
         return (
             <View>
-                <UserBaseInfo/>
+                <UserBaseInfo
+                    avatar_hd = {this.props.item.user.avatar_hd}
+                    name = {this.props.item.user.avatar_hd}
+                />
                 <View style={styles.additionalInfo}>
                     <TouchableOpacity style={styles.tag}>
                         <Image 
                             source={require('../Source/Image/share.png')}
                             style={styles.icon}
                         />
-                        <Text>233</Text>
+                        <Text>{this.props.item.reposts_count}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.tag}>
                         <Image 
                             source={require('../Source/Image/comment.png')}
                             style={styles.icon}
                         />
-                        <Text>122</Text>
+                        <Text>{this.props.item.comments_count}</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.tag}>
                         <Image 
                             source={require('../Source/Image/like.png')}
                             style={styles.icon}
                         />
-                        <Text>999+</Text>
+                        <Text>{this.props.item.attitudes_count}</Text>
                     </TouchableOpacity>
                 </View>
             </View>

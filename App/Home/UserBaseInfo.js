@@ -16,11 +16,11 @@ export default class UserBaseInfo extends Component {
                 <TouchableOpacity style={styles.userBaseInfo2}>
                     <Image
                         source={{
-                        uri: this.props.headImageURL
+                        uri: this.props.avatar_hd
                     }}
                         style={styles.userHeadImage}/>
                     <View style={styles.userDescribe}>
-                        <Text style={styles.userName}>{this.props.userName}</Text>
+                        <Text style={styles.userName}>{this.props.name}</Text>
                         <View
                             style={{
                             flexDirection: 'row'
@@ -29,7 +29,7 @@ export default class UserBaseInfo extends Component {
                                 {this.props.time+'  来自'}
                             </Text>
                             <TouchableOpacity>
-                                <Text style={styles.highlightedInfo}>{this.props.describeTail}</Text>
+                                <Text style={styles.highlightedInfo}>{this.props.tail}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

@@ -21,12 +21,12 @@ import WeiboList from './WeiboList';
 
 import { Network } from '../Common/Network/Network';
 import * as SinaAPI from '../Common/Network/SinaWeiboAPI';
-import { readData } from '../Common/Storage/Storage';
 
 const WIDTH = Dimensions.get('window').width;
 const sliderLength = WIDTH/8;
 
 export default class WeiboHome extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -66,21 +66,7 @@ export default class WeiboHome extends Component {
                 console.log('name = '+contactObj.name+'\n'+'phoneNumber = '+contactObj.phoneNumber);
             });
         }
-
-        // 去掉a标签
-        // str = str.replace(/(<\/?a.*?>)|(<\/?span.*?>)/g,'');
         
-        // this.loadData((data)=>{
-        //     console.log(data);
-        // });
-        
-    }
-
-    loadData = (callback)=>{
-        readData('token',(value)=>{
-            let params = {'access_token':value}
-            Network.get(SinaAPI.home_timeline,params,(data) => callback(data));
-        });
     }
 
     scrollDirection(offsetX){
