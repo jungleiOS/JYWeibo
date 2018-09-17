@@ -56,7 +56,7 @@ RCT_EXPORT_METHOD(getAuthWithUserInfoFromSina:(RCTResponseSenderBlock)block) {
                             @"expiration"       : expirationStr,
                             @"name"             : resp.name,
                             @"iconurl"          : resp.iconurl,
-                            @"gender"           : resp.unionGender,
+                            @"gender"           : resp.gender,
                             };
   NSError *parseError = nil;
   NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDic options:NSJSONWritingPrettyPrinted error:&parseError];

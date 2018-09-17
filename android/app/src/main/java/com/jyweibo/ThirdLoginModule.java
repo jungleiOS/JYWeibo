@@ -20,13 +20,16 @@ import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.UMAuthListener;
 
+import com.google.gson.Gson;
+
+import java.util.HashMap;
 import java.util.Map;
 
 
 public class ThirdLoginModule extends ReactContextBaseJavaModule {
 
     ReactApplicationContext aContext;
-    UMShareAPI umShareAPI;
+    Callback callback;
     UMAuthListener umAuthListener = new UMAuthListener() {
         /**
          * @desc 授权开始的回调
@@ -48,6 +51,24 @@ public class ThirdLoginModule extends ReactContextBaseJavaModule {
 
             Toast.makeText(aContext, "成功了", Toast.LENGTH_LONG).show();
 
+            Map<String, String> baseJsonMap=new HashMap<String, String>();
+            baseJsonMap.put("uid",data.get("uid"));
+            baseJsonMap.put("accessToken",data.get("access_token"));
+            baseJsonMap.put("refreshToken",data.get("refreshToken"));
+            baseJsonMap.put("expiration",data.get("expiration"));
+            baseJsonMap.put("name",data.get("name"));
+            baseJsonMap.put("iconurl",data.get("iconurl"));
+            baseJsonMap.put("gender",data.get("gender"));
+
+            Gson gsonObj = new Gson();
+            String baseJsonStr = gsonObj.toJson(baseJsonMap);
+            String detailedJsonStr = gsonObj.toJson(data);
+            WritableMap contactMap = Arguments.createMap();
+
+            contactMap.putString("baseJSONStr",baseJsonStr);
+            contactMap.putString("detailedJSONStr",detailedJsonStr);
+
+            callback.invoke(contactMap);
         }
 
         /**
@@ -92,15 +113,10 @@ public class ThirdLoginModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void getAuthWithUserInfoFromSina(Callback callback) {
-
+    public void getAuthWithUserInfoFromSina(Callback theCallback) {
         Activity activity = getCurrentActivity();
         UMShareAPI.get(aContext).getPlatformInfo(activity, SHARE_MEDIA.SINA, umAuthListener);
-
-        WritableMap contactMap = Arguments.createMap();
-        contactMap.putString("name","android");
-        contactMap.putString("phoneNumber","15520061222");
-        callback.invoke(contactMap);
+        callback = theCallback;
     }
 
 }
