@@ -10,30 +10,17 @@ import {
 } from "react-native";
 
 import UserBaseInfo from './UserBaseInfo';
+import WeiboContent from './WeiboContent';
 
 import { Network } from '../Common/Network/Network';
 import * as SinaAPI from '../Common/Network/SinaWeiboAPI';
 import { readData } from '../Common/Storage/Storage';
+import { weiboTime } from '../Common/Global/DateManager';
 
 export default class WeiboList extends Component {
 
     constructor(props) {
         super(props);
-        this.data = [
-            {
-                'id': '1',
-                'title': '2333'
-            }, {
-                'id': '2',
-                'title': '2333'
-            }, {
-                'id': '3',
-                'title': '2333'
-            }, {
-                'id': '4',
-                'title': '2333'
-            }
-        ];
         this.state = {
             selected: (new Map()),
             dataSource: []
@@ -41,15 +28,15 @@ export default class WeiboList extends Component {
     }
 
     componentDidMount() {
+        console.log(Token);
         // 去掉a标签
         // str = str.replace(/(<\/?a.*?>)|(<\/?span.*?>)/g,'');
-        
-        this.loadData((data)=>{
-            console.log(data);
-            this.setState({
-                dataSource:data.statuses
-            });
-        });
+        // this.loadData((data)=>{
+        //     console.log(data);
+        //     this.setState({
+        //         dataSource:data.statuses
+        //     });
+        // });
         
     }
 
@@ -105,8 +92,10 @@ class MyListItem extends React.PureComponent {
     _onPress = () => {
         this.props.onPressItem(this.props.item.id);
     };
-
     
+    componentDidMount() {
+
+    }
 
     render() {
         
@@ -114,8 +103,11 @@ class MyListItem extends React.PureComponent {
             <View>
                 <UserBaseInfo
                     avatar_hd = {this.props.item.user.avatar_hd}
-                    name = {this.props.item.user.avatar_hd}
+                    name = {this.props.item.user.name}
+                    time = {weiboTime(this.props.item.created_at)}
+                    tail = {this.props.item.source.replace(/(<\/?a.*?>)|(<\/?span.*?>)/g,'')}
                 />
+                <WeiboContent/>
                 <View style={styles.additionalInfo}>
                     <TouchableOpacity style={styles.tag}>
                         <Image 
@@ -159,5 +151,5 @@ const styles = StyleSheet.create({
     icon: {
         width:20,
         height:20
-    }
+    },
 });

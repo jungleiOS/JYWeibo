@@ -1,4 +1,5 @@
 import { Dimensions, Platform, Alert, PixelRatio} from 'react-native';
+import { readData } from '../Storage/Storage';
 // iPhoneX
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
@@ -12,7 +13,9 @@ const isIphoneX = () => {
         Platform.OS === 'ios' && ((screenH === X_HEIGHT && screenW === X_WIDTH) || (screenH === X_WIDTH && screenW === X_HEIGHT))
     )
 }
-
+const getToken = async () =>{
+    await readData('token',value=>{return value});
+}
 const headerHeight = () => {
     let iPhoneX = isIphoneX(); 
     if (Platform.OS === 'ios') {
@@ -44,3 +47,4 @@ global.Alert = Alert;
 global.PixelRatio = PixelRatio.get();
 // 最小线宽
 global.pixel = 1 / PixelRatio;
+global.Token = getToken();
