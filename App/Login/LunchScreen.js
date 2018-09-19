@@ -8,23 +8,22 @@ import {
     Image
  } from 'react-native';
 
-import { readData } from '../Common/Storage/Storage'
-
-const user_token = 'token';
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 export default class LunchPage extends Component {
 
     componentDidMount() {
-        readData(user_token,(vaule)=>{
-            if (vaule === undefined) {
+
+        Token.then((value)=>{
+            if (value === undefined) {
                 this.isLogin = false;
             }
             else {
                 this.isLogin = true;
             }
         });
+
         this.time = setInterval(()=>{
             if (this.isLogin) {
                 this.props.navigation.navigate('Home');
@@ -32,7 +31,8 @@ export default class LunchPage extends Component {
             else {
                 this.props.navigation.navigate('Auth');
             }
-        },3000);
+        },1000);
+        
     }
 
     componentWillUnmount() {

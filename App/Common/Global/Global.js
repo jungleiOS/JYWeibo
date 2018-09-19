@@ -1,10 +1,11 @@
 import { Dimensions, Platform, Alert, PixelRatio} from 'react-native';
-import { readData } from '../Storage/Storage';
+import { AsyncStorage } from "react-native"
 // iPhoneX
 const X_WIDTH = 375;
 const X_HEIGHT = 812;
 const Height = Dimensions.get('window').height;
 const Width = Dimensions.get('window').width;
+const Token = 'token'
 
 const isIphoneX = () => {
     let screenW = Dimensions.get('window').width;
@@ -13,9 +14,12 @@ const isIphoneX = () => {
         Platform.OS === 'ios' && ((screenH === X_HEIGHT && screenW === X_WIDTH) || (screenH === X_WIDTH && screenW === X_HEIGHT))
     )
 }
+
 const getToken = async () =>{
-    await readData('token',value=>{return value});
+    let token = await AsyncStorage.getItem(Token);
+    return token;
 }
+
 const headerHeight = () => {
     let iPhoneX = isIphoneX(); 
     if (Platform.OS === 'ios') {

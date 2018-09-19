@@ -16,12 +16,14 @@ const readData = async (key,callback) => {
             // We have data!!
             console.log(value);
             callback(value);
+
         }
      } catch (error) {
             console.log(error);
             callback(undefined);
             // Error retrieving data
      }
+
 }
 
 export { storeData, readData};

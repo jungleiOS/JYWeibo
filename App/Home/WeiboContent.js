@@ -13,7 +13,8 @@ export default class WeiboContent extends Component {
     render() {
         return(
             <View style={styles.middle}>
-                    <Text>{this.props.item.text}</Text>
+                    <Text>{this.props.text}</Text>
+                    <Text>{'2333<Text style={{color:red}}>2333</Text>'}</Text>
             </View>
         );
     }

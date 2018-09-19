@@ -168,6 +168,14 @@ export default class WeiboHome extends Component {
     }
     
     render() {
+        let list = [];
+        let list2 = ['233','nima','97h','IBM','2b'];
+        let list3 = ['red','blue','black','green','pink']
+        for (let i = 0; i < 5; i++) {
+            list.push(
+                <Text style={{color:list3[i]}}>{list2[i]}</Text>
+            )
+        }
         return (
             <Container>
                 <CustomModal 
@@ -211,6 +219,7 @@ export default class WeiboHome extends Component {
                             this.props.navigation.navigate('Auth');
                         }}>
                             <Text>去登录</Text>
+                            <Text>{list[1]}</Text>
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
