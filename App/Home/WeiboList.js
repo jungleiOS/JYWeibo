@@ -37,9 +37,9 @@ export default class WeiboList extends Component {
         str = this.spacialMatch(topicReg,str);
         str = this.spacialMatch(linkReg,str);
         str = this.spacialMatch(expressionReg,str);
-        // let testReg = new RegExp('(?<=\<Text\>).*(?=\</Text\>)','g');
-        // let list = str.match(testReg);
-        // console.log(list);
+        let testReg = new RegExp('(?<=\<Text\>).*(?=\</Text\>)','g');
+        let list = str.match(testReg);
+        console.log(list);
         
         // let result = reg.exec(str);
         // console.log('result = '+result[1]);
