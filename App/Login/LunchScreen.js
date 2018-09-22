@@ -16,7 +16,7 @@ export default class LunchPage extends Component {
     componentDidMount() {
 
         Token.then((value)=>{
-            if (value === undefined) {
+            if (value === undefined || value === null) {
                 this.isLogin = false;
             }
             else {

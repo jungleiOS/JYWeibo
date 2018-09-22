@@ -6,7 +6,8 @@ import {
     TouchableOpacity,
     FlatList,
     View,
-    Image
+    Image,
+    RefreshControl
 } from "react-native";
 
 import UserBaseInfo from './UserBaseInfo';
@@ -22,24 +23,27 @@ export default class WeiboList extends Component {
         super(props);
         this.state = {
             selected: (new Map()),
-            dataSource: []
+            dataSource: [],
+            refreshing: true,
+            isLoreMoreing: 'LoreMoreing'
         };
+        this.page = 1;
     }
 
     componentDidMount() {
 
-        this.loadData((data)=>{
-            console.log(data);
+        this.loadData(this.page,(data)=>{
             this.setState({
-                dataSource:data.statuses
+                dataSource: data.statuses,
+                refreshing: false
             });
         });
         
     }
 
-    loadData = (callback)=>{
+    loadData = (page,callback)=>{
         Token.then((value)=>{
-            let params = {'access_token':value}
+            let params = {'access_token':value,'page':page}
             Network.get(SinaAPI.home_timeline,params,(data) => callback(data));
         });
     }
@@ -72,6 +76,61 @@ export default class WeiboList extends Component {
         );
     }
 
+    _onRefresh = () => {
+        let page = 1;
+        this.loadData(page,(data)=>{
+            let dataSource = this.state.dataSource.concat(data.statuses);
+            this.setState({
+                dataSource: dataSource,
+                refreshing: false
+            });
+        })
+    }
+
+    renderFooter = () => {
+        if (!this.state.dataSource) return null;
+        if (this.state.dataSource.length != 0 && this.state.isLoreMoreing == 'LoreMoreing') {
+            return (
+                <View style={{
+                    height: 44,
+                    backgroundColor: 'rgb(200,200,200)',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Text>{'正在加载....'}</Text>
+                </View>
+            )
+        } else if (this.state.isLoreMoreing === 'LoreMoreEmpty') {
+            return (
+                <View style={{
+                    height: 44,
+                    backgroundColor: 'rgb(200,200,200)',
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                }}>
+                    <Text>{'暂无更多'}</Text>
+                </View>
+            )
+        } else {
+            return null
+        }
+    }
+
+    endLoadMore = () => {
+        this.page++;
+        this.loadData(this.page,(data)=>{
+            let dataSource = this.state.dataSource.concat(data.statuses);
+            this.setState({
+                dataSource: dataSource,
+            });
+            if (data.statuses.length < 20) {
+                this.setState({
+                    isLoreMoreing: 'LoreMoreEmpty'
+                });
+            }
+        })
+    }
+
     render() {
         return (
             <FlatList
@@ -79,6 +138,15 @@ export default class WeiboList extends Component {
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
                 ItemSeparatorComponent={this._itemSeparatorComponent}
+                ListFooterComponent={this.renderFooter}
+                onEndReachedThreshold={0.1}
+                onEndReached={this.endLoadMore}
+                refreshControl={
+                    <RefreshControl
+                        refreshing={this.state.refreshing}
+                        onRefresh={this._onRefresh}
+                        title="Loading..."/>
+                }
             />
         );
     }

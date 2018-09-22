@@ -28,7 +28,6 @@ export default class WeiboContent extends Component {
         let i = 0;
         str = str.replace(regExpStr,()=>{
             let str = '〆'+matchList[i]+'〆';
-            console.log(str);
             i++;
             return str;
         });
@@ -54,22 +53,19 @@ export default class WeiboContent extends Component {
                 des = des.slice(1);
                 des = des.substring(0, des.length - 1);
                 temp = (
-                    <Text style={styles.des} key={index}>{des}</Text>
+                    <TouchableOpacity key={index}><Text style={styles.des}>{des}</Text></TouchableOpacity>
                 );
                 componentList.push(temp);
             }
             index = index + 1;
         }
-        console.log(componentList);
         return componentList;
     }
 
     render() {
         return(
             <View style={styles.middle}>
-                <Text>
-                    {this.component(this.props.text)}
-                </Text>
+                {this.component(this.props.text)}
             </View>
         );
     }
@@ -81,6 +77,8 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         left:13,
         width:Dimensions.get('window').width-26,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
     },
     des:{
         color:'red'
