@@ -212,6 +212,7 @@ export default class WeiboHome extends Component {
                             <Text>show Modal</Text>
                         </TouchableOpacity> */}
                         <WeiboList/>
+                        
                     </View>
                     <View style={styles.test}>
                         <TouchableOpacity onPress={()=>{
