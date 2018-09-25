@@ -56,7 +56,7 @@ export default class WeiboList extends Component {
         });
     };
 
-    _keyExtractor = (item, index) => item.id.toString();
+    _keyExtractor = (item, index) => item.idstr;
 
     _renderItem = ({item}) => (
         <MyListItem
@@ -79,9 +79,9 @@ export default class WeiboList extends Component {
     _onRefresh = () => {
         let page = 1;
         this.loadData(page,(data)=>{
-            let dataSource = this.state.dataSource.concat(data.statuses);
+            console.log('refresh == '+JSON.stringify(data.statuses));
             this.setState({
-                dataSource: dataSource,
+                dataSource: tdata.statuses,
                 refreshing: false
             });
         })
@@ -120,6 +120,7 @@ export default class WeiboList extends Component {
         this.page++;
         this.loadData(this.page,(data)=>{
             let dataSource = this.state.dataSource.concat(data.statuses);
+            console.log('loadMore == '+JSON.stringify(data.statuses));
             this.setState({
                 dataSource: dataSource,
             });
