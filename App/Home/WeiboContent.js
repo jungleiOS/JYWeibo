@@ -3,10 +3,6 @@ import {
     Text,
     Dimensions,
     StyleSheet,
-    TouchableOpacity,
-    FlatList,
-    View,
-    Image
 } from "react-native";
 
 export default class WeiboContent extends Component {
@@ -53,7 +49,7 @@ export default class WeiboContent extends Component {
                 des = des.slice(1);
                 des = des.substring(0, des.length - 1);
                 temp = (
-                    <TouchableOpacity key={index}><Text style={styles.des}>{des}</Text></TouchableOpacity>
+                    <Text key={index} style={styles.des}>{des}</Text>
                 );
                 componentList.push(temp);
             }
@@ -64,9 +60,9 @@ export default class WeiboContent extends Component {
 
     render() {
         return(
-            <View style={styles.middle}>
+            <Text style={styles.middle}>
                 {this.component(this.props.text)}
-            </View>
+            </Text>
         );
     }
 }
@@ -77,8 +73,6 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         left:13,
         width:Dimensions.get('window').width-26,
-        flexDirection: 'row',
-        flexWrap: 'wrap',
     },
     des:{
         color:'red'

@@ -48,7 +48,7 @@ export default class WeiboList extends Component {
         Token.then((value)=>{
             let params = {'access_token':value,'page':page}
             Network.get(SinaAPI.home_timeline,params,(data) => {
-                console.log(JSON.stringify(data.statuses[1]));
+                console.log(data.statuses);
                 callback(data);
             });
         });
@@ -101,6 +101,7 @@ export default class WeiboList extends Component {
             return (
                 <View style={styles.loadMore}>
                     <ActivityIndicator size='small' color='white' />
+                    <Text>正在加载中...</Text>
                 </View>
             )
         } else if (this.state.isLoreMoreing === 'LoreMoreEmpty') {
@@ -163,6 +164,34 @@ class MyListItem extends React.PureComponent {
 
     }
 
+    footer = () =>{
+        return (
+            <View style={styles.additionalInfo}>
+                <TouchableOpacity style={styles.tag}>
+                    <Image 
+                        source={require('../Source/Image/share.png')}
+                        style={styles.icon}
+                    />
+                    <Text>{this.props.item.reposts_count}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.tag}>
+                    <Image 
+                        source={require('../Source/Image/comment.png')}
+                        style={styles.icon}
+                    />
+                    <Text>{this.props.item.comments_count}</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.tag}>
+                    <Image 
+                        source={require('../Source/Image/like.png')}
+                        style={styles.icon}
+                    />
+                    <Text>{this.props.item.attitudes_count}</Text>
+                </TouchableOpacity>
+            </View>
+        );
+    }
+
     render() {
         return (
             <View>
@@ -177,31 +206,9 @@ class MyListItem extends React.PureComponent {
                 />
                 <ImageBrowseComponent
                     urlList = {this.props.item.pic_urls}
-                    callback={()=>{}}
+                    callback={(i)=>{console.log("选择的图片index"+i)}}
                 />
-                <View style={styles.additionalInfo}>
-                    <TouchableOpacity style={styles.tag}>
-                        <Image 
-                            source={require('../Source/Image/share.png')}
-                            style={styles.icon}
-                        />
-                        <Text>{this.props.item.reposts_count}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.tag}>
-                        <Image 
-                            source={require('../Source/Image/comment.png')}
-                            style={styles.icon}
-                        />
-                        <Text>{this.props.item.comments_count}</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.tag}>
-                        <Image 
-                            source={require('../Source/Image/like.png')}
-                            style={styles.icon}
-                        />
-                        <Text>{this.props.item.attitudes_count}</Text>
-                    </TouchableOpacity>
-                </View>
+                {this.footer()}
             </View>
         );
     }
@@ -226,6 +233,7 @@ const styles = StyleSheet.create({
     loadMore: {
         height: 44,
         backgroundColor: '#eeeeee',
+        flexDirection:'row',
         justifyContent: 'center',
         alignItems: 'center'
     }
