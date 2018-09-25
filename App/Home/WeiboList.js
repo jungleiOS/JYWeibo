@@ -7,11 +7,13 @@ import {
     FlatList,
     View,
     Image,
-    RefreshControl
+    RefreshControl,
+    ActivityIndicator
 } from "react-native";
 
 import UserBaseInfo from './UserBaseInfo';
 import WeiboContent from './WeiboContent';
+import ImageBrowseComponent from './ImageBrowseComponent';
 
 import { Network } from '../Common/Network/Network';
 import * as SinaAPI from '../Common/Network/SinaWeiboAPI';
@@ -33,6 +35,7 @@ export default class WeiboList extends Component {
     componentDidMount() {
 
         this.loadData(this.page,(data)=>{
+            
             this.setState({
                 dataSource: data.statuses,
                 refreshing: false
@@ -44,7 +47,10 @@ export default class WeiboList extends Component {
     loadData = (page,callback)=>{
         Token.then((value)=>{
             let params = {'access_token':value,'page':page}
-            Network.get(SinaAPI.home_timeline,params,(data) => callback(data));
+            Network.get(SinaAPI.home_timeline,params,(data) => {
+                console.log(JSON.stringify(data.statuses[1]));
+                callback(data);
+            });
         });
     }
 
@@ -79,7 +85,9 @@ export default class WeiboList extends Component {
     _onRefresh = () => {
         let page = 1;
         this.loadData(page,(data)=>{
-            console.log('refresh == '+JSON.stringify(data.statuses));
+            for (let i = 0; i < data.statuses.length; i++) {
+                console.log('loadMore == '+JSON.stringify(data.statuses[i].idstr));
+            } 
             this.setState({
                 dataSource: tdata.statuses,
                 refreshing: false
@@ -91,23 +99,13 @@ export default class WeiboList extends Component {
         if (!this.state.dataSource) return null;
         if (this.state.dataSource.length != 0 && this.state.isLoreMoreing == 'LoreMoreing') {
             return (
-                <View style={{
-                    height: 44,
-                    backgroundColor: 'rgb(200,200,200)',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
-                    <Text>{'正在加载....'}</Text>
+                <View style={styles.loadMore}>
+                    <ActivityIndicator size='small' color='white' />
                 </View>
             )
         } else if (this.state.isLoreMoreing === 'LoreMoreEmpty') {
             return (
-                <View style={{
-                    height: 44,
-                    backgroundColor: 'rgb(200,200,200)',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}>
+                <View style={styles.loadMore}>
                     <Text>{'暂无更多'}</Text>
                 </View>
             )
@@ -120,7 +118,9 @@ export default class WeiboList extends Component {
         this.page++;
         this.loadData(this.page,(data)=>{
             let dataSource = this.state.dataSource.concat(data.statuses);
-            console.log('loadMore == '+JSON.stringify(data.statuses));
+            for (let i = 0; i < data.statuses.length; i++) {
+                console.log('loadMore == '+JSON.stringify(data.statuses[i].idstr));
+            }   
             this.setState({
                 dataSource: dataSource,
             });
@@ -175,6 +175,10 @@ class MyListItem extends React.PureComponent {
                 <WeiboContent
                     text = {this.props.item.text}
                 />
+                <ImageBrowseComponent
+                    urlList = {this.props.item.pic_urls}
+                    callback={()=>{}}
+                />
                 <View style={styles.additionalInfo}>
                     <TouchableOpacity style={styles.tag}>
                         <Image 
@@ -218,5 +222,11 @@ const styles = StyleSheet.create({
     icon: {
         width:20,
         height:20
+    },
+    loadMore: {
+        height: 44,
+        backgroundColor: '#eeeeee',
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
