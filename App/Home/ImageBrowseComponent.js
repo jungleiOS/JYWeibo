@@ -14,12 +14,18 @@ export default class ImageBrowseComponent extends Component {
     renderAllImage = (imageURLList,callback) => {
         if (!imageURLList) return;
         let list = [];
+        let url;
+        let urlList = [];
         for (let i = 0; i < imageURLList.length; i++) {
+            url = imageURLList[i].thumbnail_pic.replace('thumbnail','large');
+            urlList.push(url);
+        }
+        for (let i = 0; i < urlList.length; i++) {
             list.push(
-                <TouchableOpacity key={i} onPress={()=>callback(i)}>
+                <TouchableOpacity key={i} onPress={()=>callback(i,urlList)}>
                     <Image 
                         style={styles.imageStye}
-                        source={{uri:imageURLList[i].thumbnail_pic.replace('thumbnail','large')}}
+                        source={{uri:urlList[i]}}
                     />
                 </TouchableOpacity>
             );

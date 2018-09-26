@@ -45,13 +45,13 @@ export default class WeiboList extends Component {
     }
 
     loadData = (page,callback)=>{
-        Token.then((value)=>{
-            let params = {'access_token':value,'page':page,'count':10}
-            Network.get(SinaAPI.home_timeline,params,(data) => {
-                console.log(data.statuses);
-                callback(data);
-            });
-        });
+        // Token.then((value)=>{
+        //     let params = {'access_token':value,'page':page,'count':10}
+        //     Network.get(SinaAPI.home_timeline,params,(data) => {
+        //         console.log(data.statuses);
+        //         callback(data);
+        //     });
+        // });
     }
 
     _onPressItem = (id) => {
@@ -68,6 +68,7 @@ export default class WeiboList extends Component {
         <MyListItem
             item={item}
             onPressItem={this._onPressItem}
+            callback={this.props.callback}
             selected={!!this.state.selected.get(item.id)}
         />
     );
@@ -172,17 +173,20 @@ class MyListItem extends React.PureComponent {
                 <WeiboContent
                     text = {this.props.item.text}
                 />
-                {this.retweeted_status(this.props.item.retweeted_status)}
+                {this.retweeted_status(this.props.item.retweeted_status,this.props.callback)}
                 <ImageBrowseComponent
                     urlList = {this.props.item.pic_urls}
-                    callback={(i)=>{console.log("选择的图片index"+i)}}
+                    callback={(index,urlList)=>{
+                        this.props.callback({'imageList':urlList,'index':index});
+                        console.log("选择的图片index"+index);
+                    }}
                 />
                 {this.footer()}
             </View>
         );
     }
 
-    retweeted_status = (retweeted_status) => {
+    retweeted_status = (retweeted_status,callback) => {
         if (!retweeted_status) return null;
         return (
             <View>
@@ -192,7 +196,10 @@ class MyListItem extends React.PureComponent {
                 />
                 <ImageBrowseComponent 
                     urlList = {retweeted_status.pic_urls}
-                    callback={(i)=>{console.log("选择的图片index"+i)}}
+                    callback={(index,urlList)=>{
+                        this.props.callback({'imageList':urlList,'index':index});
+                        console.log("选择的图片index"+index);
+                    }}
                     backgroundColor = {'#f7f7f7'}
                 />
             </View>
