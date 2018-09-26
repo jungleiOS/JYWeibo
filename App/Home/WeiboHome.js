@@ -186,14 +186,7 @@ export default class WeiboHome extends Component {
                 />
                 <Modal visible={this.state.imageViewerModal} transparent={false}>
                     <ImageViewer 
-                        imageUrls={[
-                            {
-                                'url':'https://avatars2.githubusercontent.com/u/7970947?v=3&s=460',
-                            },
-                            {'url':'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1527660246058&di=6f0f1b19cf05a64317cbc5d2b3713d64&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F0112a85874bd24a801219c7729e77d.jpg'},
-                            {'url':'http://img.zcool.cn/community/01bef15568672b0000012716336dd4.jpg@1280w_1l_2o_100sh.jpg'}
-
-                        ]}
+                        imageUrls={this.state.imageUrls}
                         index={this.state.imageViewerIndex}
                         onClick={()=>{
                             this.setState({
@@ -227,17 +220,17 @@ export default class WeiboHome extends Component {
                         }}>
                             <Text>show Modal</Text>
                         </TouchableOpacity> */}
-                        <WeiboList callback={(index,urlList)=>{
-                        }}/>
-                        <TouchableOpacity onPress={()=>{
-                            this.setState({
+                        <WeiboList callback={(imageObj)=>{
+                            let list = [];
+                            for (let i = 0; i < imageObj.imageList.length; i++) {
+                                list.push({'url':imageObj.imageList[i]});
+                            }
+                             this.setState({
                                 imageViewerModal:true,
-                                imageUrls:['http://img.zcool.cn/community/0117e2571b8b246ac72538120dd8a4.jpg@1280w_1l_2o_100sh.jpg','http://img.zcool.cn/community/01f09e577b85450000012e7e182cf0.jpg@1280w_1l_2o_100sh.jpg','http://img.zcool.cn/community/0125fd5770dfa50000018c1b486f15.jpg@1280w_1l_2o_100sh.jpg'],
-                                imageViewerIndex: 0
+                                imageUrls:list,
+                                imageViewerIndex: imageObj.index
                             });
-                        }}>
-                            <Text>233333</Text>
-                        </TouchableOpacity>
+                        }}/>
                     </View>
                     <View style={styles.test}>
                         <TouchableOpacity onPress={()=>{

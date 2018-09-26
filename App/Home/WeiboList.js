@@ -45,13 +45,13 @@ export default class WeiboList extends Component {
     }
 
     loadData = (page,callback)=>{
-        // Token.then((value)=>{
-        //     let params = {'access_token':value,'page':page,'count':10}
-        //     Network.get(SinaAPI.home_timeline,params,(data) => {
-        //         console.log(data.statuses);
-        //         callback(data);
-        //     });
-        // });
+        Token.then((value)=>{
+            let params = {'access_token':value,'page':page,'count':10}
+            Network.get(SinaAPI.home_timeline,params,(data) => {
+                console.log(data.statuses);
+                callback(data);
+            });
+        });
     }
 
     _onPressItem = (id) => {
