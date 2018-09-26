@@ -9,6 +9,7 @@ import {
     DeviceEventEmitter,
     Platform,
     TouchableOpacity,
+    Modal
 } from "react-native";
 
 import {
@@ -21,6 +22,8 @@ import WeiboList from './WeiboList';
 
 import { Network } from '../Common/Network/Network';
 import * as SinaAPI from '../Common/Network/SinaWeiboAPI';
+
+import ImageViewer from 'react-native-image-zoom-viewer';
 
 const WIDTH = Dimensions.get('window').width;
 const sliderLength = WIDTH/8;
@@ -35,7 +38,8 @@ export default class WeiboHome extends Component {
             translationDistance: 0,
             left: 0,
             modalVisible: false,
-            titleText: '关注'
+            titleText: '关注',
+            imageUrls: []
         };
         this.newX = 0;
         this.oldX = 0;
@@ -178,6 +182,9 @@ export default class WeiboHome extends Component {
                     callback = {(obj)=>this.modalCallback(obj)}
                     onDismiss = {()=>this._onDismiss()}
                 />
+                <Modal visible={false} transparent={true}>
+                    <ImageViewer imageUrls={this.state.imageUrls}/>
+                </Modal>
                 <HomeHeader
                     slideLineWidth = {this.state.slideLineWidth}
                     callback = {(obj)=>this.headerCallback(obj)}
@@ -185,7 +192,6 @@ export default class WeiboHome extends Component {
                     maxWidth = {this.maxWidth}
                     titleText = {this.state.titleText}
                 />
-
                 <ScrollView 
                     ref = "scrollView"
                     horizontal={true}

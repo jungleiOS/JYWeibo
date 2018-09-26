@@ -46,7 +46,7 @@ export default class WeiboList extends Component {
 
     loadData = (page,callback)=>{
         Token.then((value)=>{
-            let params = {'access_token':value,'page':page,'count':20}
+            let params = {'access_token':value,'page':page,'count':10}
             Network.get(SinaAPI.home_timeline,params,(data) => {
                 console.log(data.statuses);
                 callback(data);
@@ -100,8 +100,8 @@ export default class WeiboList extends Component {
         if (this.state.dataSource.length != 0 && this.state.isLoreMoreing == 'LoreMoreing') {
             return (
                 <View style={styles.loadMore}>
-                    <ActivityIndicator size='small' color='#929192' />
-                    <Text style={{color:'#929192'}}>正在加载中...</Text>
+                    <ActivityIndicator size='small' color='#5f5f5f' />
+                    <Text style={{color:'#5f5f5f'}}>正在加载中...</Text>
                 </View>
             )
         } else if (this.state.isLoreMoreing === 'LoreMoreEmpty') {
@@ -159,10 +159,6 @@ class MyListItem extends React.PureComponent {
     _onPress = () => {
         this.props.onPressItem(this.props.item.id);
     };
-    
-    componentDidMount() {
-
-    }
 
     render() {
         return (
@@ -176,11 +172,29 @@ class MyListItem extends React.PureComponent {
                 <WeiboContent
                     text = {this.props.item.text}
                 />
+                {this.retweeted_status(this.props.item.retweeted_status)}
                 <ImageBrowseComponent
                     urlList = {this.props.item.pic_urls}
                     callback={(i)=>{console.log("选择的图片index"+i)}}
                 />
                 {this.footer()}
+            </View>
+        );
+    }
+
+    retweeted_status = (retweeted_status) => {
+        if (!retweeted_status) return null;
+        return (
+            <View>
+                <WeiboContent 
+                    text={retweeted_status.text} 
+                    backgroundColor = {'#f7f7f7'}
+                />
+                <ImageBrowseComponent 
+                    urlList = {retweeted_status.pic_urls}
+                    callback={(i)=>{console.log("选择的图片index"+i)}}
+                    backgroundColor = {'#f7f7f7'}
+                />
             </View>
         );
     }

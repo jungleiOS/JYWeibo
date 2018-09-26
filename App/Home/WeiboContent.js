@@ -4,6 +4,8 @@ import {
     Dimensions,
     StyleSheet,
 } from "react-native";
+import { white } from "ansi-colors";
+import { View } from "native-base";
 
 export default class WeiboContent extends Component {
 
@@ -60,15 +62,18 @@ export default class WeiboContent extends Component {
 
     render() {
         return(
-            <Text style={styles.middle}>
-                {this.component(this.props.text)}
-            </Text>
+            <View style={{backgroundColor:this.props.backgroundColor}}>
+                <Text style={styles.text}>
+                    {this.component(this.props.text)}
+                </Text>
+            </View>
         );
     }
 }
 
 const styles = StyleSheet.create({
-    middle:{
+    text: {
+        textAlign: 'left',
         marginTop: 8,
         marginBottom: 8,
         left:13,

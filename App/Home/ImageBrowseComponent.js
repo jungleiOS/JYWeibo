@@ -29,8 +29,10 @@ export default class ImageBrowseComponent extends Component {
 
     render() {
         return(
-            <View style={styles.imageBrowseStyle}>
-                {this.renderAllImage(this.props.urlList,this.props.callback)}
+            <View style={{backgroundColor:this.props.backgroundColor}}>
+                <View style={styles.imageBrowseStyle}>
+                    {this.renderAllImage(this.props.urlList,this.props.callback)}
+                </View>
             </View>
         );
     }
@@ -40,13 +42,15 @@ const styles = StyleSheet.create({
     imageBrowseStyle: {
         flexDirection: 'row',
         flexWrap: 'wrap',
-        left:10,
-        width:WIDTH-30,
+        left:12.5,
+        width:WIDTH-27.5,
     },
     imageStye: {
-        marginLeft: 5,
+        marginLeft: 2.5,
+        marginRight: 2.5,
         marginTop: 5,
-        width:(WIDTH-30)/3-5,
-        height:(WIDTH-30)/3-5
+        marginBottom: 5,
+        width:(WIDTH-40)/3,
+        height:(WIDTH-40)/3
     }
 });
