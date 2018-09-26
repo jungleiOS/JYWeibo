@@ -46,7 +46,7 @@ export default class WeiboList extends Component {
 
     loadData = (page,callback)=>{
         Token.then((value)=>{
-            let params = {'access_token':value,'page':page}
+            let params = {'access_token':value,'page':page,'count':20}
             Network.get(SinaAPI.home_timeline,params,(data) => {
                 console.log(data.statuses);
                 callback(data);
@@ -100,8 +100,8 @@ export default class WeiboList extends Component {
         if (this.state.dataSource.length != 0 && this.state.isLoreMoreing == 'LoreMoreing') {
             return (
                 <View style={styles.loadMore}>
-                    <ActivityIndicator size='small' color='white' />
-                    <Text>正在加载中...</Text>
+                    <ActivityIndicator size='small' color='#929192' />
+                    <Text style={{color:'#929192'}}>正在加载中...</Text>
                 </View>
             )
         } else if (this.state.isLoreMoreing === 'LoreMoreEmpty') {
@@ -164,6 +164,27 @@ class MyListItem extends React.PureComponent {
 
     }
 
+    render() {
+        return (
+            <View>
+                <UserBaseInfo
+                    avatar_hd = {this.props.item.user.avatar_hd}
+                    name = {this.props.item.user.name}
+                    time = {weiboTime(this.props.item.created_at)}
+                    tail = {this.props.item.source.replace(/(<\/?a.*?>)|(<\/?span.*?>)/g,'')}
+                />
+                <WeiboContent
+                    text = {this.props.item.text}
+                />
+                <ImageBrowseComponent
+                    urlList = {this.props.item.pic_urls}
+                    callback={(i)=>{console.log("选择的图片index"+i)}}
+                />
+                {this.footer()}
+            </View>
+        );
+    }
+
     footer = () =>{
         return (
             <View style={styles.additionalInfo}>
@@ -192,26 +213,6 @@ class MyListItem extends React.PureComponent {
         );
     }
 
-    render() {
-        return (
-            <View>
-                <UserBaseInfo
-                    avatar_hd = {this.props.item.user.avatar_hd}
-                    name = {this.props.item.user.name}
-                    time = {weiboTime(this.props.item.created_at)}
-                    tail = {this.props.item.source.replace(/(<\/?a.*?>)|(<\/?span.*?>)/g,'')}
-                />
-                <WeiboContent
-                    text = {this.props.item.text}
-                />
-                <ImageBrowseComponent
-                    urlList = {this.props.item.pic_urls}
-                    callback={(i)=>{console.log("选择的图片index"+i)}}
-                />
-                {this.footer()}
-            </View>
-        );
-    }
 }
 
 const styles = StyleSheet.create({

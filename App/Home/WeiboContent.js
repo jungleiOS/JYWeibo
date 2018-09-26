@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
         width:Dimensions.get('window').width-26,
     },
     des:{
-        color:'red'
+        color: '#0385d2'
     },
     des2:{
         color:'black'

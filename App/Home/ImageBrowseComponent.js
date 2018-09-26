@@ -11,15 +11,15 @@ const WIDTH = Dimensions.get('window').width;
 
 export default class ImageBrowseComponent extends Component {
 
-    renderAllImage = (imageURLList) => {
+    renderAllImage = (imageURLList,callback) => {
         if (!imageURLList) return;
         let list = [];
         for (let i = 0; i < imageURLList.length; i++) {
             list.push(
-                <TouchableOpacity key={i} onPress={()=>this.porps.callback(i)}>
+                <TouchableOpacity key={i} onPress={()=>callback(i)}>
                     <Image 
                         style={styles.imageStye}
-                        source={{uri:imageURLList[i].thumbnail_pic}}
+                        source={{uri:imageURLList[i].thumbnail_pic.replace('thumbnail','large')}}
                     />
                 </TouchableOpacity>
             );
@@ -30,7 +30,7 @@ export default class ImageBrowseComponent extends Component {
     render() {
         return(
             <View style={styles.imageBrowseStyle}>
-                {this.renderAllImage(this.props.urlList)}
+                {this.renderAllImage(this.props.urlList,this.props.callback)}
             </View>
         );
     }

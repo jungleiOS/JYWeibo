@@ -2,6 +2,10 @@ import React, {
     Component
 } from 'react';
 
+import {
+    Image
+} from "react-native";
+
 import WeiboHome from '../../Home/WeiboHome';
 import Message from '../../Message/Message';
 import Add from '../../Add/Add';
@@ -19,6 +23,30 @@ import {
     createDrawerNavigator,
     createSwitchNavigator
 } from 'react-navigation';
+
+const kAdd = require('../../Source/Image/add.png');
+const kAddSelected = require('../../Source/Image/addSelected.png');
+const kMessage = require('../../Source/Image/message.png');
+const kMessageSelected = require('../../Source/Image/messageSelected.png');
+const kFind = require('../../Source/Image/find.png');
+const kFindSelected = require('../../Source/Image/findSelected.png');
+const kWeibo = require('../../Source/Image/weibo.png');
+const kWeiboSelected = require('../../Source/Image/weiboSelected.png');
+const kMy = require('../../Source/Image/my.png');
+const kMySelected = require('../../Source/Image/mySelected.png');
+
+const TabOptions = (tabBarTitle,normalImage,selectedImage) => {
+    const tabBarLabel = tabBarTitle;
+    const tabBarIcon = (({tintColor,focused})=> {
+        return(
+            <Image
+                source={!focused ? normalImage : selectedImage}
+                style={[{height:35,width:35 }, {tintColor: tintColor}]}
+            />
+        )
+    });
+    return {tabBarLabel,tabBarIcon};
+}
 
 const HomeStack = createStackNavigator({
     Home: {
@@ -56,7 +84,7 @@ const FoundStack = createStackNavigator({
     },
 });
 
-const SettingStack = createStackNavigator({
+const MyStack = createStackNavigator({
     Setting: {
         screen: Setting,
         navigationOptions: {
@@ -68,33 +96,23 @@ const SettingStack = createStackNavigator({
 const RootTabNavigator = createBottomTabNavigator({
     Home: {
         screen: HomeStack,
-        navigationOptions: {
-            tabBarLabel: '首页'
-        }
+        navigationOptions: () => TabOptions('微博',kWeibo,kWeiboSelected)
     },
     Message: {
         screen: MessageStack,
-        navigationOptions: {
-            tabBarLabel: '消息'
-        }
+        navigationOptions: () => TabOptions('消息',kMessage,kMessageSelected)
     },
     Add: {
         screen: AddStack,
-        navigationOptions: {
-            tabBarLabel: '添加'
-        }
+        navigationOptions: () => TabOptions('添加',kAdd,kAddSelected)
     },
     Found: {
         screen: FoundStack,
-        navigationOptions: {
-            tabBarLabel: '发现'
-        }
+        navigationOptions: () => TabOptions('发现',kFind,kFindSelected)
     },
-    Setting: {
-        screen: SettingStack,
-        navigationOptions: {
-            tabBarLabel: '我的'
-        }
+    My: {
+        screen: MyStack,
+        navigationOptions: () => TabOptions('我的',kMy,kMySelected)
     },
 });
 
