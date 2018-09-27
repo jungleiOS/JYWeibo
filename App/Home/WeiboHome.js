@@ -50,13 +50,13 @@ export default class WeiboHome extends Component {
         this.maxWidth = WIDTH/4;
         this.minWidth = WIDTH/16;
         this.scrollEnd = true;
-        this.currentTitleIndex = 1;
         this.scrollEnd = false;
         this.tagList = [
             ['全部关注','特别关注','V+微博','好友圈','群微博'],
             ['逆向','iOS','Android','React Native','SSH','名人明星'],
             ['特别关注','群微博','好友圈','全都好友关注','全都关注好友圈密']
         ];
+        this.currentPage = 0;
     }
 
     componentDidMount() {
@@ -112,6 +112,7 @@ export default class WeiboHome extends Component {
     _onMomentumScrollEnd = (contentOffset) => {
         this.scrollDirection(contentOffset.x);
         this.scrollEnd = true;
+        this.currentPage = contentOffset.x/WIDTH;
         if (this.isRight){
             this.setState({
                 left:sliderLength,
@@ -127,16 +128,10 @@ export default class WeiboHome extends Component {
     }
 
     headerCallback = (obj) => {
-        if (obj.index === this.currentTitleIndex) {
-            NativeModules.AddressBookModule.takeContact('233');
-            NativeModules.AddressBookModule.promiseMessage('promise').then(
-                (result) => {
-                    console.log(result)
-                }
-            ).catch()
-            return;
-        }else {
-            this.currentTitleIndex = obj.index;
+        if (this.currentPage === 0 && obj.index === 1) {
+            this.setState({
+                modalVisible:true
+            });
         }
         if (obj.index === 1){
             this.refs.scrollView.scrollTo({x: 0, y: 0, animated: true})
@@ -153,24 +148,24 @@ export default class WeiboHome extends Component {
             modalVisible:false,
             titleText: this.tagList[obj.titleID][obj.tagID]
         });
-        if (!global.iOS) {
-            NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina(()=>{
+        // if (!global.iOS) {
+        //     NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina(()=>{
 
-            });
-        }
+        //     });
+        // }
     }
 
     _onDismiss = () => {
-        NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina((info)=>{
-            let base_info = JSON.parse(info.baseJSONStr);
-            console.log(base_info);
-            let params = {
-                'access_token':base_info.accessToken
-            };
-            Network.get(SinaAPI.home_timeline,params,(data)=>{
-                console.log(data);
-            });
-        });
+        // NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina((info)=>{
+        //     let base_info = JSON.parse(info.baseJSONStr);
+        //     console.log(base_info);
+        //     let params = {
+        //         'access_token':base_info.accessToken
+        //     };
+        //     Network.get(SinaAPI.home_timeline,params,(data)=>{
+        //         console.log(data);
+        //     });
+        // });
     }
     
     render() {

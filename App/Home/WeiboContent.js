@@ -4,7 +4,6 @@ import {
     Dimensions,
     StyleSheet,
 } from "react-native";
-import { white } from "ansi-colors";
 import { View } from "native-base";
 
 export default class WeiboContent extends Component {

@@ -86,9 +86,6 @@ export default class WeiboList extends Component {
     _onRefresh = () => {
         let page = 1;
         this.loadData(page,(data)=>{
-            for (let i = 0; i < data.statuses.length; i++) {
-                console.log('loadMore == '+JSON.stringify(data.statuses[i].idstr));
-            } 
             this.setState({
                 dataSource: tdata.statuses,
                 refreshing: false
@@ -117,16 +114,14 @@ export default class WeiboList extends Component {
     }
 
     endLoadMore = () => {
-        this.page++;
+        if (this.state.isLoreMoreing === 'LoreMoreEmpty') return;
+        this.page = this.page + 1;
         this.loadData(this.page,(data)=>{
-            let dataSource = this.state.dataSource.concat(data.statuses);
-            for (let i = 0; i < data.statuses.length; i++) {
-                console.log('loadMore == '+JSON.stringify(data.statuses[i].idstr));
-            }   
+            let dataSource = this.state.dataSource.concat(data.statuses);  
             this.setState({
                 dataSource: dataSource,
             });
-            if (data.statuses.length < 20) {
+            if (data.statuses.length < 10) {
                 this.setState({
                     isLoreMoreing: 'LoreMoreEmpty'
                 });
@@ -148,7 +143,7 @@ export default class WeiboList extends Component {
                     <RefreshControl
                         refreshing={this.state.refreshing}
                         onRefresh={this._onRefresh}
-                        title="Loading..."/>
+                        title="努力刷新中..."/>
                 }
             />
         );
@@ -178,7 +173,6 @@ class MyListItem extends React.PureComponent {
                     urlList = {this.props.item.pic_urls}
                     callback={(index,urlList)=>{
                         this.props.callback({'imageList':urlList,'index':index});
-                        console.log("选择的图片index"+index);
                     }}
                 />
                 {this.footer()}
