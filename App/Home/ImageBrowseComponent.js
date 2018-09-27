@@ -49,14 +49,14 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         left:12.5,
-        width:WIDTH-27.5,
+        width:WIDTH-25.5,
     },
     imageStye: {
         marginLeft: 2.5,
         marginRight: 2.5,
         marginTop: 5,
         marginBottom: 5,
-        width:(WIDTH-40)/3,
-        height:(WIDTH-40)/3
+        width:(WIDTH-45)/3,
+        height:(WIDTH-45)/3
     }
 });

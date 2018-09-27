@@ -46,8 +46,10 @@ export default class WeiboList extends Component {
 
     loadData = (page,callback)=>{
         Token.then((value)=>{
+            console.log('value === '+value);
             let params = {'access_token':value,'page':page,'count':10}
             Network.get(SinaAPI.home_timeline,params,(data) => {
+                console.log('data === '+JSON.stringify(data));
                 console.log(data.statuses);
                 callback(data);
             });

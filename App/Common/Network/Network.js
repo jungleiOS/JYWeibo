@@ -1,4 +1,5 @@
-
+import { Alert, NativeModules } from "react-native";
+import { storeData } from '../Storage/Storage'; 
 const Network = {
     
     post: (url, data, callback)=>{
@@ -32,7 +33,25 @@ const Network = {
         fetch(url)
         .then((response) => response.json())
         .then((responseData) => {
-            callback(responseData);
+            console.log(JSON.stringify(responseData));
+            if (responseData.error && responseData.error_code === 21332) {
+                Alert.alert(
+                    '授权信息过期',
+                    '',
+                    [
+                        {text:'取消',onPress:()=>{}},
+                        {text:'重新授权', onPress: () =>{
+                            NativeModules.ThirdLoginModule.getAuthWithUserInfoFromSina((info)=>{
+                                let base_info = JSON.parse(info.baseJSONStr);
+                                storeData('token',base_info.accessToken)
+                            });
+                        }}
+                    ]
+                );
+            }
+            else {
+                callback(responseData);
+            }
         })
         .catch(err => {
             console.log(err);
