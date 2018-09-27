@@ -13,8 +13,7 @@ const readData = async (key,callback) => {
     try {
         const value = await AsyncStorage.getItem(key);
         if (value !== null) {
-            // We have data!!
-            console.log(value);
+            // console.log(value);
             callback(value);
 
         }

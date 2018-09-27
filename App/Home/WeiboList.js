@@ -30,6 +30,7 @@ export default class WeiboList extends Component {
             isLoreMoreing: 'LoreMoreing'
         };
         this.page = 1;
+        this.test_id = 0;
     }
 
     componentDidMount() {
@@ -46,11 +47,8 @@ export default class WeiboList extends Component {
 
     loadData = (page,callback)=>{
         Token.then((value)=>{
-            console.log('value === '+value);
             let params = {'access_token':value,'page':page,'count':10}
             Network.get(SinaAPI.home_timeline,params,(data) => {
-                console.log('data === '+JSON.stringify(data));
-                console.log(data.statuses);
                 callback(data);
             });
         });
@@ -89,7 +87,7 @@ export default class WeiboList extends Component {
         let page = 1;
         this.loadData(page,(data)=>{
             this.setState({
-                dataSource: tdata.statuses,
+                dataSource: data.statuses,
                 refreshing: false
             });
         })
@@ -117,7 +115,7 @@ export default class WeiboList extends Component {
 
     endLoadMore = () => {
         if (this.state.isLoreMoreing === 'LoreMoreEmpty') return;
-        this.page = this.page + 1;
+        if (this.state.dataSource.length === 10) return;
         this.loadData(this.page,(data)=>{
             let dataSource = this.state.dataSource.concat(data.statuses);  
             this.setState({
@@ -128,10 +126,11 @@ export default class WeiboList extends Component {
                     isLoreMoreing: 'LoreMoreEmpty'
                 });
             }
-        })
+        });
     }
 
     render() {
+        
         return (
             <FlatList
                 data={this.state.dataSource}
@@ -174,6 +173,7 @@ class MyListItem extends React.PureComponent {
                 <ImageBrowseComponent
                     urlList = {this.props.item.pic_urls}
                     callback={(index,urlList)=>{
+                        
                         this.props.callback({'imageList':urlList,'index':index});
                     }}
                 />
@@ -193,8 +193,7 @@ class MyListItem extends React.PureComponent {
                 <ImageBrowseComponent 
                     urlList = {retweeted_status.pic_urls}
                     callback={(index,urlList)=>{
-                        this.props.callback({'imageList':urlList,'index':index});
-                        console.log("选择的图片index"+index);
+                        callback({'imageList':urlList,'index':index});
                     }}
                     backgroundColor = {'#f7f7f7'}
                 />
