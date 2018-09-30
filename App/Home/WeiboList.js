@@ -123,7 +123,7 @@ export default class WeiboList extends Component {
 
     endLoadMore = () => {
         if (this.state.isLoreMoreing === 'LoreMoreEmpty') return;
-        if (this.state.dataSource.length === 10) return;
+        // if (this.state.dataSource.length === 10) return;
         this.loadData(this.page,(data)=>{
             let dataSource = this.state.dataSource.concat(data.statuses);  
             this.setState({
