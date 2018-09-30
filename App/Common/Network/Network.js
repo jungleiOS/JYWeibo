@@ -34,7 +34,7 @@ const Network = {
             let timer = setInterval(()=>{
                 callback(JSON.parse(data));
                 clearInterval(timer);
-            },1000)
+            },1000);
         });
 
         // fetch(url)

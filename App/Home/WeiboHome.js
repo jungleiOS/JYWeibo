@@ -169,7 +169,6 @@ export default class WeiboHome extends Component {
     }
     
     render() {
-        console.log('渲染了');
         return (
             <Container>
                 <CustomModal 
@@ -203,9 +202,9 @@ export default class WeiboHome extends Component {
                     pagingEnabled = {true}
                     showsHorizontalScrollIndicator = {false}
                     bounces = {false}
-                    // onMomentumScrollEnd = {(event)=>this._onMomentumScrollEnd(event.nativeEvent.contentOffset)}
-                    // onScroll = {(event)=>this._onScroll(event)}
-                    // scrollEventThrottle = {16}
+                    onMomentumScrollEnd = {(event)=>this._onMomentumScrollEnd(event.nativeEvent.contentOffset)}
+                    onScroll = {(event)=>this._onScroll(event)}
+                    scrollEventThrottle = {16}
                 >
                     <View style={styles.test1}>
                         {/* <TouchableOpacity onPress={()=>{

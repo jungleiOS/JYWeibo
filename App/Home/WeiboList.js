@@ -31,6 +31,7 @@ export default class WeiboList extends Component {
         };
         this.page = 1;
         this.test_id = 0;
+        this.i = 0;
     }
 
     componentDidMount() {
@@ -43,6 +44,10 @@ export default class WeiboList extends Component {
             });
         });
         
+    }
+
+    shouldComponentUpdate(nextProps,nextState) {
+        return nextState.dataSource !== this.state.dataSource;
     }
 
     loadData = (page,callback)=>{
@@ -62,7 +67,10 @@ export default class WeiboList extends Component {
         });
     };
 
-    _keyExtractor = (item, index) => item.idstr;
+    _keyExtractor = (item, index) => {
+        this.i++;
+        item.idstr+this.i;
+    }
 
     _renderItem = ({item}) => (
         <MyListItem
@@ -130,7 +138,6 @@ export default class WeiboList extends Component {
     }
 
     render() {
-        
         return (
             <FlatList
                 data={this.state.dataSource}
