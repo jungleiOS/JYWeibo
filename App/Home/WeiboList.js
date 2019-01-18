@@ -68,8 +68,8 @@ export default class WeiboList extends Component {
     };
 
     _keyExtractor = (item, index) => {
-        this.i++;
-        item.idstr+this.i;
+        let id = item.id + index;
+        return id.toString();
     }
 
     _renderItem = ({item}) => (
@@ -139,7 +139,7 @@ export default class WeiboList extends Component {
 
     render() {
         return (
-            <FlatList
+            <FlatList 
                 data={this.state.dataSource}
                 keyExtractor={this._keyExtractor}
                 renderItem={this._renderItem}
@@ -180,7 +180,6 @@ class MyListItem extends React.PureComponent {
                 <ImageBrowseComponent
                     urlList = {this.props.item.pic_urls}
                     callback={(index,urlList)=>{
-                        
                         this.props.callback({'imageList':urlList,'index':index});
                     }}
                 />
